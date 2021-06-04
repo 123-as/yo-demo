@@ -1,0 +1,668 @@
+/*=============================================
+=                  General                    =
+=============================================*/
+
+* {
+    box-sizing: border-box;
+    font-family: 'cwTeXYen', sans-serif;
+}
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+    
+    /* text-align: center;
+	overflow:hidden; */
+}
+
+button:focus {
+    outline: none;
+}
+
+/*=============================================
+=                  Navbar                     =
+=============================================*/
+
+.navbar {
+    box-shadow: 0 3px 18px #3D3D3D;
+}
+
+/*=============================================
+=                  Header                     =
+=============================================*/
+.lead1{
+    font-size:5vw;
+    font-weight: 300;
+    line-height: 1.2; 
+    color: white;
+}
+.lead2{
+    padding:0px 10px;
+    font-size: 2vw;
+    font-weight: 300;
+    color: white;
+}
+p{
+    font-size: 1.5vw;
+}
+.jumbotron {
+    padding: 200px 0px;
+    margin-bottom: 0px;
+    border-radius: 0px;
+}
+
+#header {
+   
+  background-image: url('../img/主視覺底圖.png');
+  background-size: cover;
+    /* 固定背景圖 */
+    background-attachment: fixed;
+    position: relative;
+
+     
+}
+
+
+#header:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.664);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+}
+
+#header>.container {
+    position: relative;
+    z-index: 5;
+}
+
+/*=============================================
+=                  Intro                      =
+=============================================*/
+#reviewsSection{
+    display: flex;
+    flex-wrap: wrap;
+    position: relative; 
+    /* animation 參數設定*/
+   
+    animation-name: MoveToRight;   /* 動畫名稱，需與 keyframe 名稱對應*/
+    animation-duration: 4s;   /*動畫持續時間，單位為秒*/
+    animation-delay: 2s;   /* 動畫延遲開始時間*/
+    animation-iteration-count: 1;    /*動畫次數，infinite 為無限次*/  
+    
+}
+/* @keyframes MoveToRight {
+    from { left: 0; }
+    to { left: 100%; } */
+
+
+/* #reviewSection{
+            
+    position: relative;
+    -webkit-animation: MoveToRight 5s infinite;
+    animation: MoveToRight 5s infinite;
+}
+@-webkit-keyframes MoveToRight{
+    from{left:0;}
+    to{left:80%;}
+}
+@keyframes MoveToRight{
+    from{left:0;}
+    to{left:80%;}
+} */
+
+/*=============================================
+=                  Features                   =
+=============================================*/
+
+/*=============================================
+=                  Reviews                    =
+=============================================*/
+
+.carousel-indicators>li {
+    border-radius: 50%;
+}
+
+/*=============================================
+=                  Gallery                    =
+=============================================*/
+
+/* TODO: 設定Hover特效 */
+
+[id^='galleryImage'] {
+    background-size: cover;
+    
+    /* filter: grayscale(100%); */
+}
+
+[id^='galleryImage']>.gallery-text {
+    /* margin-top: 5vw; */
+    margin-bottom: 5vw;
+    padding-top: 5vh;
+    color: white;
+    /* line-height: 300px; */
+    text-shadow: 0 5px 10px rgba(0, 0, 0, 1);
+    /* text-align: center; */
+    align-items:flex-end;
+    opacity: 0;
+    transition: all .5s ease;
+    
+}
+.topic{
+  /* margin-bottom: 20vw; */
+  /* padding-top: 20vh; */
+  padding: 5px;
+  padding-bottom: 0vh;
+  position:absolute;
+  bottom:0px;
+  right:0px;
+  /* text-shadow: yellow !important; */
+  
+}
+[id^='galleryImage']:hover {
+    filter: grayscale(0%);
+}
+
+[id^='galleryImage']:hover>.gallery-text {
+    opacity: 1;
+    font-size: 5vw;
+    
+}
+
+/* 放入背景圖片 */
+
+#galleryImage1 {
+    background-image: url('../img/jing10.jpg');
+    
+}
+
+#galleryImage2 {
+    background-image: url('../img/jing3.jpg');
+}
+
+#galleryImage3 {
+    background-image: url('../img/jing1.jpg');
+}
+
+#galleryImage4 {
+    background-image: url('../img/jing2.jpg');
+}
+
+#galleryImage5 {
+    background-image: url('https://image.kkday.com/v2/image/get/w_1920%2Ch_1080%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_34176/20200623032103_pNOfu/jpg');
+    border-radius: 5px;
+  }
+
+#galleryImage6 {
+    background-image: url('https://image.kkday.com/v2/image/get/w_1920%2Ch_1080%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_104601/20201109090022_lRr3I/jpg');
+    border-radius: 5px;
+  }
+
+
+#galleryImage7 {
+    background-image: url('https://image.kkday.com/v2/image/get/w_1920%2Ch_1080%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_103379/20200924071012_8Ykos/jpg');
+    border-radius: 5px;
+  }
+
+#galleryImage8 {
+    background-image: url('../img/jing11.jpg');
+    border-radius: 5px;
+  }
+
+/*=============================================
+=                  Start Now                  =
+=============================================*/
+
+/*=============================================
+=                   Footer                    =
+=============================================*/
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-end p {
+    font-size: 8px;
+    margin: 0;
+}
+
+#goBackBtn {
+    width: 40px;
+    height: 40px;
+    border:none;
+}
+
+.space{
+    padding:10px 0px;
+}
+
+.mtb3p{
+    padding:4% 8%;
+
+}
+  #left{padding: 15px;}
+  #right{padding: 10px;}
+
+.hot{
+    font-size: 6vw;
+    font-weight: 500;
+    line-height: 200px;
+    padding: 2vw 0;
+    text-align: center;
+    color: #3d3d3d;
+}
+
+.row1 {
+  background-color:transparent;
+  border-radius: 7px;
+  /* margin: 5px 0 5px; */
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+.rowright:hover {
+  background-color: #3D3D3D;
+  color: #FFF!important;
+    
+}
+
+.divotherinfo{
+    background-color:transparent;
+    border-radius: 5%;
+    padding: 2%;
+}
+
+.option{
+  max-width: 100%;  
+  height: 25.5vh;
+ 
+}
+.option1{
+  max-width: 30%;  
+  height: 10vh;
+  padding: 10px;
+  margin: 10px;
+}
+.optiontext{
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 1vh;
+  color: black;
+  font-size: 18px;
+  transition-duration: 0.5s;
+  position: relative;
+  top: 5px;
+}
+.optiontext:hover{
+  color:#CCC;
+  opacity: 1;
+  top: 0px;
+  
+}
+
+.questionreport{
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 1vh;
+  color: black;
+  font-size: 18px;
+  ;
+}
+.questionreport:hover{
+  color:#CCC;
+}
+
+
+.input{
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding-left: 60px;
+  margin-right: 10px;
+  /* margin-left: 10px;
+  margin-right: 10px; */
+}
+.btn3{
+  display: inline-block;
+  width: 40px;
+  height: 100%;
+  outline: 0;
+  border: 0 none;
+  background: url(https://g.csdnimg.cn/common/csdn-toolbar/images/csdn-white-search.png) no-repeat center center #3C3C3C;
+  background-size: 70%;
+  border-radius: 0 16px 16px 0; 
+  margin-left: 0; 
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.py-5{
+  margin: auto;
+  padding-left: 250px;
+  padding-right: 250px;
+}
+/* 
+ .photo{
+    padding-left: 15vw;
+}  */
+
+@media (max-width: 1280px) {
+  .py-5{
+    margin: auto;
+    padding-left: 170px;
+    padding-right: 170px;
+  }
+  #left{padding: 15px;}
+  #right{padding: 10px;}
+
+  .optiontext{
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 1vh;
+    color: black;
+    font-size: 15px;
+  }
+}
+@media (max-width: 1180px) {
+  .py-5{
+    padding-left: 170px;
+    padding-right: 170px;
+    padding-top: 5px;
+  }
+  #left{padding: 15px;}
+  #right{padding: 10px;}
+}
+@media (max-width: 960px) {
+  .py-5{
+    padding-left: 45px;
+    padding-right: 45px;
+    padding-top: 5px;
+  }
+}
+@media (max-width: 900px) {
+  .py-5{
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 5px;
+  }
+}
+
+@media (max-width: 768px) {
+    .photo{
+      padding-left: 7vw;
+    }
+    h5{
+        font-size: 2vw;
+    }
+    a{
+        font-size: 2vw;
+    }
+    .lead1{
+        font-size:6vw;
+        font-weight: 300;
+        line-height: 1.2; 
+    }
+    .lead2{
+        padding:0px 10px;
+        font-size: 3vw;
+        font-weight: 300;
+    }
+    p{
+        font-size: 2.3vw;
+    }
+    h1{
+        font-size: 4.5vw;
+    }
+    h2{
+        font-size: 4vw;
+    }
+    .option{
+      max-width: 100%;  
+      height: 23vh;
+      
+    }
+    .option1{
+      max-width: 40%;  
+      height: 10vh;
+      padding: 10px;
+      margin: 5px;
+    }
+    .py-5{
+      margin: auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .optiontext{
+      padding-left: 0;
+      padding-right: 0;
+      padding-top: 1vh;
+      color: black;
+      font-size: 17px;
+    }
+  }
+
+@media (max-width: 320px) {
+      .pb-3, .py-3 {
+        padding-top: 0rem !important;
+        padding-bottom: 0rem !important;
+    }
+
+    .py-5{
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 5px;
+    }
+
+    .photo{
+        padding-left: 27vw;
+      }
+
+    h5{
+        font-size: 5vw;
+    }
+    a{
+        font-size: 2vw;
+    }
+
+    .lead1{
+        font-size:12vw;
+        font-weight: 300;
+        line-height: 1.2; 
+    }
+    .lead2{
+        padding:0px 10px;
+        font-size: 6vw;
+        font-weight: 300;
+    }
+    p{
+        font-size: 5vw;
+    }
+    h1{
+        font-size: 7vw;
+    }
+    h2{
+        font-size: 6vw;
+    }
+    .col-12 {
+      flex: 0 0 100%;
+      max-width: 100%;
+      margin-top: 10px;
+      margin-left: 0px;
+    }
+    .carousel-indicators li{
+      width: 20px;
+      height: 5px;
+    }
+    .py-5{
+      margin: auto;
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+    .optiontext{
+      padding-left: 0;
+      padding-right: 0;
+      padding-top: 1vh;
+      color: black;
+      font-size: 5px;
+      display: -webkit-box; /*彈性伸縮盒子模型顯示*/
+      -webkit-box-orient: vertical; /*排列方式*/ 
+      -webkit-line-clamp: 3; /*顯示文字行數(這裡控制多少行隱藏)*/
+      overflow: hidden; /*溢位隱藏*/
+    }
+    /* header之上下高度 */
+    .jumbotron{
+      padding: 140px 0px 50px;
+  }
+  .fword{
+    font-size: 14px;
+  }
+}
+
+
+/*! * * * * * * * * * * * * * * * * * * * *\  
+  CSShake :: shake-vertical
+  v1.5.0
+  CSS classes to move your DOM
+  (c) 2015 @elrumordelaluz
+  http://elrumordelaluz.github.io/csshake/
+  Licensed under MIT
+\* * * * * * * * * * * * * * * * * * * * */
+.shake-vertical {
+    display: inherit;
+    transform-origin: center center; }
+  
+  .shake-freeze,
+  .shake-constant.shake-constant--hover:hover,
+  .shake-trigger:hover .shake-constant.shake-constant--hover {
+    animation-play-state: paused; }
+  
+  .shake-freeze:hover,
+  .shake-trigger:hover .shake-freeze, .shake-vertical:hover,
+  .shake-trigger:hover .shake-vertical {
+    animation-play-state: running; }
+  
+  @keyframes shake-vertical {
+    2% {
+      transform: translate(0, -3px) rotate(0); }
+    4% {
+      transform: translate(0, -9px) rotate(0); }
+    6% {
+      transform: translate(0, 1px) rotate(0); }
+    8% {
+      transform: translate(0, -5px) rotate(0); }
+    10% {
+      transform: translate(0, 1px) rotate(0); }
+    12% {
+      transform: translate(0, -1px) rotate(0); }
+    14% {
+      transform: translate(0, -6px) rotate(0); }
+    16% {
+      transform: translate(0, 0px) rotate(0); }
+    18% {
+      transform: translate(0, 0px) rotate(0); }
+    20% {
+      transform: translate(0, 2px) rotate(0); }
+    22% {
+      transform: translate(0, 10px) rotate(0); }
+    24% {
+      transform: translate(0, 5px) rotate(0); }
+    26% {
+      transform: translate(0, 3px) rotate(0); }
+    28% {
+      transform: translate(0, 3px) rotate(0); }
+    30% {
+      transform: translate(0, 5px) rotate(0); }
+    32% {
+      transform: translate(0, 5px) rotate(0); }
+    34% {
+      transform: translate(0, -6px) rotate(0); }
+    36% {
+      transform: translate(0, 6px) rotate(0); }
+    38% {
+      transform: translate(0, -9px) rotate(0); }
+    40% {
+      transform: translate(0, 6px) rotate(0); }
+    42% {
+      transform: translate(0, 3px) rotate(0); }
+    44% {
+      transform: translate(0, 3px) rotate(0); }
+    46% {
+      transform: translate(0, 6px) rotate(0); }
+    48% {
+      transform: translate(0, -9px) rotate(0); }
+    50% {
+      transform: translate(0, 7px) rotate(0); }
+    52% {
+      transform: translate(0, 9px) rotate(0); }
+    54% {
+      transform: translate(0, 3px) rotate(0); }
+    56% {
+      transform: translate(0, -1px) rotate(0); }
+    58% {
+      transform: translate(0, -2px) rotate(0); }
+    60% {
+      transform: translate(0, -6px) rotate(0); }
+    62% {
+      transform: translate(0, -5px) rotate(0); }
+    64% {
+      transform: translate(0, 4px) rotate(0); }
+    66% {
+      transform: translate(0, -4px) rotate(0); }
+    68% {
+      transform: translate(0, -2px) rotate(0); }
+    70% {
+      transform: translate(0, -8px) rotate(0); }
+    72% {
+      transform: translate(0, -6px) rotate(0); }
+    74% {
+      transform: translate(0, -4px) rotate(0); }
+    76% {
+      transform: translate(0, 0px) rotate(0); }
+    78% {
+      transform: translate(0, 7px) rotate(0); }
+    80% {
+      transform: translate(0, -6px) rotate(0); }
+    82% {
+      transform: translate(0, 10px) rotate(0); }
+    84% {
+      transform: translate(0, -4px) rotate(0); }
+    86% {
+      transform: translate(0, 10px) rotate(0); }
+    88% {
+      transform: translate(0, -1px) rotate(0); }
+    90% {
+      transform: translate(0, 1px) rotate(0); }
+    92% {
+      transform: translate(0, 9px) rotate(0); }
+    94% {
+      transform: translate(0, -4px) rotate(0); }
+    96% {
+      transform: translate(0, -8px) rotate(0); }
+    98% {
+      transform: translate(0, 4px) rotate(0); }
+    0%, 100% {
+      transform: translate(0, 0) rotate(0); } }
+
+        
+  .shake-vertical:hover,
+  .shake-trigger:hover .shake-vertical, .shake-vertical.shake-freeze, .shake-vertical.shake-constant {
+    animation-name: shake-vertical;
+    animation-duration: 100ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite; }
+
+    /*! * * * * * * * * * * * * * * * * * * * *\  
+  CSShake :: shake
+  v1.5.0
+  CSS classes to move your DOM
+  (c) 2015 @elrumordelaluz
+  http://elrumordelaluz.github.io/csshake/
+  Licensed under MIT
+\* * * * * * * * * * * * * * * * * * * * */
+.shake{display:inherit;transform-origin:center center}.shake-freeze,.shake-constant.shake-constant--hover:hover,.shake-trigger:hover .shake-constant.shake-constant--hover{animation-play-state:paused}.shake-freeze:hover,.shake-trigger:hover .shake-freeze,.shake:hover,.shake-trigger:hover .shake{animation-play-state:running}@keyframes shake{2%{transform:translate(-.5px, -.5px) rotate(-.5deg)}4%{transform:translate(2.5px, -.5px) rotate(.5deg)}6%{transform:translate(-.5px, 2.5px) rotate(-.5deg)}8%{transform:translate(.5px, 2.5px) rotate(-.5deg)}10%{transform:translate(1.5px, 1.5px) rotate(-.5deg)}12%{transform:translate(2.5px, .5px) rotate(1.5deg)}14%{transform:translate(1.5px, -.5px) rotate(.5deg)}16%{transform:translate(.5px, -1.5px) rotate(.5deg)}18%{transform:translate(-.5px, 1.5px) rotate(1.5deg)}20%{transform:translate(2.5px, -1.5px) rotate(-.5deg)}22%{transform:translate(-1.5px, -.5px) rotate(1.5deg)}24%{transform:translate(-1.5px, 2.5px) rotate(-.5deg)}26%{transform:translate(.5px, 2.5px) rotate(.5deg)}28%{transform:translate(1.5px, .5px) rotate(1.5deg)}30%{transform:translate(-.5px, -1.5px) rotate(.5deg)}32%{transform:translate(-1.5px, 1.5px) rotate(.5deg)}34%{transform:translate(2.5px, 1.5px) rotate(1.5deg)}36%{transform:translate(.5px, -.5px) rotate(.5deg)}38%{transform:translate(-.5px, -.5px) rotate(1.5deg)}40%{transform:translate(-.5px, -1.5px) rotate(1.5deg)}42%{transform:translate(-1.5px, 1.5px) rotate(1.5deg)}44%{transform:translate(-1.5px, .5px) rotate(-.5deg)}46%{transform:translate(-.5px, .5px) rotate(-.5deg)}48%{transform:translate(-1.5px, 2.5px) rotate(-.5deg)}50%{transform:translate(1.5px, 1.5px) rotate(1.5deg)}52%{transform:translate(-.5px, .5px) rotate(.5deg)}54%{transform:translate(.5px, -1.5px) rotate(1.5deg)}56%{transform:translate(-1.5px, -1.5px) rotate(-.5deg)}58%{transform:translate(-1.5px, 2.5px) rotate(1.5deg)}60%{transform:translate(-1.5px, 1.5px) rotate(-.5deg)}62%{transform:translate(-1.5px, 1.5px) rotate(-.5deg)}64%{transform:translate(1.5px, 2.5px) rotate(1.5deg)}66%{transform:translate(.5px, .5px) rotate(1.5deg)}68%{transform:translate(-.5px, .5px) rotate(-.5deg)}70%{transform:translate(1.5px, -.5px) rotate(-.5deg)}72%{transform:translate(-.5px, 1.5px) rotate(.5deg)}74%{transform:translate(1.5px, .5px) rotate(-.5deg)}76%{transform:translate(-1.5px, 1.5px) rotate(-.5deg)}78%{transform:translate(2.5px, 2.5px) rotate(.5deg)}80%{transform:translate(2.5px, 2.5px) rotate(1.5deg)}82%{transform:translate(-.5px, -.5px) rotate(1.5deg)}84%{transform:translate(-1.5px, -1.5px) rotate(.5deg)}86%{transform:translate(-.5px, -.5px) rotate(1.5deg)}88%{transform:translate(2.5px, .5px) rotate(-.5deg)}90%{transform:translate(1.5px, 2.5px) rotate(1.5deg)}92%{transform:translate(1.5px, -1.5px) rotate(-.5deg)}94%{transform:translate(-1.5px, 2.5px) rotate(1.5deg)}96%{transform:translate(2.5px, -.5px) rotate(.5deg)}98%{transform:translate(-1.5px, 1.5px) rotate(.5deg)}0%,100%{transform:translate(0, 0) rotate(0)}}.shake:hover,.shake-trigger:hover .shake,.shake.shake-freeze,.shake.shake-constant{animation-name:shake;animation-duration:100ms;animation-timing-function:ease-in-out;animation-iteration-count:infinite}

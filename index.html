@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>溜溜溜。走</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/cwtexyen.css">
+    <link rel="icon" href="img/title_Horizontal.png?v=<?=time()?>">
+
+    <!-- 連結Bootstrap.min.css -->
+    <!-- 客製化Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css?v=<?=time()?>">
+    <!-- 使用font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+        integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <!-- 使用style.css -->
+    <link rel="stylesheet" href="css/style.css?v=<?=time()?>">
+    <!-- 連結Bootstrap所需要的js -->
+    <!-- jquery.min.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- popper.min.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <!-- bootstrap.min.js -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!-- <style>
+        #reviewSection{
+            
+            position: relative;
+            -webkit-animation: MoveToRight 5s infinite;
+            animation: MoveToRight 5s infinite;
+        }
+        @-webkit-keyframes MoveToRight{
+            from{left:0;}
+            to{left:80%;}
+        }
+        @keyframes MoveToRight{
+            from{left:0;}
+            to{left:80%;}
+        }
+    </style> -->
+
+    <!-- <文字動畫> -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
+
+</head>
+
+<body>
+    <!-- navbar -->
+    <!-- 使用Boostrap Navbar -->
+    <!-- 設定Navbar緊貼畫面上緣 fixed-top -->
+    <!-- TODO: 點擊滾動目標 -->
+    <!-- b4-元件名稱-default -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-secondary fixed-top">
+        <a class="navbar-brand" href="index.html"><img src="img/title.png" width=80px height=40px alt=""></a>
+        <!-- 行動裝置的選單按鈕 -->
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+            aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- 其他的元素 -->
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav ml-auto">
+                <!-- <li class="nav-item input">
+                    <input placeholder="輸入關鍵字"></input> -->
+                </li>
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link ">首頁</a>
+                </li>
+                <li class="nav-item">
+                    <a href="aaa - 複製.html" class="nav-link">景點總覽</a>
+                </li>
+                <li class="nav-item">
+                    <a href="drag.html" class="nav-link">安排行程</a>
+                </li>
+                <li class="nav-item">
+                    <a href="login.html" class="nav-link">帳號</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#gallerySection" class="nav-link">設定</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="header" class="jumbotron bg-dark text-secondary ">
+        <div class=" animated slideInUp container" >
+            <h1 class="row lead1 justify-content-center">溜。走</h1>
+            <p class="row lead2 justify-content-center">Stroll & Go </p>
+        </div>
+    </header>
+
+
+    <!-- featuresSection -->
+
+    <!-- featuresSection end -->
+
+    <!-- reviewsSection -->
+    <section id="reviewsSection" class="py-5 ">
+        <!-- TODO: 使用輪播(Carousel)元件放入以下兩頁內容 -->
+        <!-- 第一頁 內容 -->
+        <div class="row justify-content-center col-md-6 col-12 ">
+          
+            <div class="col-md-12 col-12 animated slideInUp ">
+                <img src="img/logo_latestnews.png"  alt="icon" width=30%;>
+                <div class="row mtb3p" id="left">
+
+                </div>
+                <div class="row1 div-item divlatestnews">
+                    
+                        <div class="col-md-12 col-6 option" id="galleryImage1" >
+                            <a class="gallery-text" href="product1.html">
+                                <div class="topic" href="goods.html" style="text-decoration:none; font-size:1.5vw;">
+                                    北海岸風光｜白沙灣、淺水灣、野柳
+                                </div>
+                            </a>
+                            <!-- 【2021跨年溫泉】日勝生加賀屋國際溫泉飯店（獨家贈送年度喜劇黑馬「求婚好意外」雙人電影票） -->
+                        </div>
+                 
+                        <div class="col-md-4 col-6 option" id="galleryImage2" alt="icon" width=30%;>
+                            <a class="gallery-text" href="product1.html">
+                                <div class="topic" href="goods.html" style="text-decoration:none; font-size:1vw;">
+                                    南國風情｜古城、墾丁大街、珊瑚礁海岸線
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-4 col-6 option" id="galleryImage3" alt="icon" width=30%;>
+                            <a class="gallery-text" href="product1.html">
+                                <div class="topic" href="goods.html" style="text-decoration:none; font-size:1vw;">
+                                    身處雲端｜隙頂山城、天長地久、二延平步道
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-4 col-6 option" id="galleryImage4" alt="icon" width=30%;>
+                            <a class="gallery-text" href="product1.html">
+                                <div class="topic" href="goods.html" style="text-decoration:none; font-size:1vw;">
+                                    台江生態｜安平美食、紅樹林、府城巡禮
+                                </div>
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="space"></div>
+        <!-- 第一頁 內容 結束 -->
+        <!-- 第二頁 -->
+        <div class="row justify-content-center col-md-6 col-12">
+            
+            <div class="col-md-12 col-12 animated slideInUp">
+                <img src="img/logo_otherinfo.png"  alt="icon" width=30%;>
+                <div class="row mtb3p" id="right">
+
+                </div>
+                <div class="div-item divotherinfo">
+                    <a class="row1 rowright" href="product1.html">
+                        <div class="col-md-3 col-6 option1" id="galleryImage5">
+                            
+                        </div>
+                        <div class="col-md-8 col-6 optiontext">
+                                【2021跨年溫泉】日勝生加賀屋國際溫泉飯店（獨家贈送年度喜劇黑馬「求婚好意外」雙人電影票）
+                        </div>
+                            <!-- 【2021跨年溫泉】日勝生加賀屋國際溫泉飯店（獨家贈送年度喜劇黑馬「求婚好意外」雙人電影票） -->
+                    </a>
+                    <a class="row1 rowright" href="product1.html">
+                        <div class="col-md-3 col-6 option1" id="galleryImage6" alt="icon" width=10%;>
+                            
+                        </div>
+                        <div class="col-md-8 col-6 optiontext">
+                                【2021跨年日出】花東曙光專車｜花蓮跨年煙火&三仙台日出
+                        </div>
+                    </a>
+                    <a class="row1 rowright" href="product1.html">
+                        <div class="col-md-3 col-6 option1" id="galleryImage7" alt="icon" width=10%;>
+                            
+                        </div>
+                        <div class="col-md-8 col-6 optiontext">
+                                藍色公路微旅行｜大稻埕史蹟導覽＆乘船漫遊淡水河＋船上導覽
+                        </div>
+                    </a>
+                    <a class="row1 rowright" href="product1.html">
+                        <div class="col-md-3 col-6 option1" id="galleryImage8" alt="icon" width=10%;>
+                            
+                        </div>
+                        <div class="col-md-8 col-6 optiontext">
+                                台北/新北一日遊｜陽明山賞秋芒、淡水賞夕陽、漁人碼頭、紅毛城
+                        </div>
+                    </a>
+                </div>             
+            </div>
+        </div>
+
+
+
+        <!-- 第二頁 結束 -->
+    </section>
+
+    <!-- <div class="catt">
+			<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="209px"
+			 height="191px" viewBox="0 0 209 191" enable-background="new 0 0 209 191" xml:space="preserve">
+		<g id="wh-left-main">
+			<g id="wh-left">
+				
+					<path id="wh-left-top_2_" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+					M53.667,62.864c0,0-28.5-16.031-47.667-7.864"/>
+				
+					<path id="wh-left-mid_2_" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+					M55.667,67.864c0,0-28.5-16.031-47.667-7.864"/>
+				
+					<path id="wh-left-low_2_" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+					M59.667,72.864c0,0-28.5-16.031-47.667-7.864"/>
+			</g>
+		</g>
+		<g id="wh-right-main">
+			<g id="wh-right">
+				
+					<path id="wh-right-top_1_" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+					M156,62.864c0,0,28.5-16.031,47.667-7.864"/>
+				
+					<path id="wh-right-mid_1_" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+					M154,67.864c0,0,28.5-16.031,47.667-7.864"/>
+				
+					<path id="wh-right-low_1_" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+					M150,72.864c0,0,28.5-16.031,47.667-7.864"/>
+			</g>
+		</g>
+		<g id="body-main">
+			<g id="body">
+				<path fill="#FFFFFF" d="M163.88,20.63c0,0-58.571-8.479-109.544-0.634C27.333,40.333,33.667,187,33.667,187L192,186
+					C192,186,189.38,41.38,163.88,20.63z M118.323,63.621c-2.946,4.245-6.662,4.622-11.165,2.408
+					c-2.833-1.393-4.046,1.053-6.787,1.589c-2.931,0.573-6.026-0.717-8.5-2.146c-1.674-0.967-0.164-3.56,1.515-2.59
+					c2.963,1.712,5.841,2.447,8.859,0.296c0.904-0.645,1.821-1.082,2.953-1.094c4.178-0.04,6.7,5.546,10.534,0.023
+					C116.827,60.53,119.43,62.027,118.323,63.621z"/>
+			</g>
+		</g>
+		<g id="right-eyes">
+			<g id="eyes-right">
+				<circle fill="#29ABE2" cx="132.25" cy="47" r="2.75"/>
+			</g>
+		</g>
+		<g id="left-eyes">
+			<g id="eyes-left">
+				<circle fill="#29ABE2" cx="81.25" cy="47" r="2.75"/>
+			</g>
+		</g>
+		<g id="right-ears">
+			<g id="ears-right">
+				<path fill="#FFFFFF" d="M155.867,16.064c-18.657,21.797,7.975,32.194,15.714,19.56c7.739-12.635,6.966-22.845,1.943-26.194
+					C168.449,6.046,158.079,13.483,155.867,16.064z M164.409,18.082c1.774-2.146,3.87-3.595,5.433-2.312
+					c2.569,2.111-0.14,7.572-0.14,7.572L164.409,18.082z"/>
+			</g>
+		</g>
+		<g id="left-ears">
+			<g id="ears-left">
+				<path fill="#FFFFFF" d="M57.102,4.364c-5.969,0.905-10.997,9.824-9.344,24.547c1.654,14.724,30.181,16.597,22.523-11.054
+					C69.374,14.582,63.132,3.45,57.102,4.364z M54.667,18.583c0,0-0.14-6.094,3.083-6.917c1.958-0.5,3.242,1.701,3.94,4.396
+					L54.667,18.583z"/>
+			</g>
+		</g>
+		</svg>
+	</div>/cat -->
+
+
+    <!-- footer -->
+    <footer id="footer" class="pt-5 bg-secondary text-secondary">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2  col-12 footer-list">
+                    <h5 class="ftitle">聯繫我們</h5>
+                    <a href="mailto:service@brand.com"
+                        style="text-decoration:none; color:#CCCCCC;" class="fword">yuan880502@gmail.com</a>
+                </div>
+                <div class="col-md-2 "></div>
+                <div class="col-md-2 col-6 footer-list">
+                    <h5 class="text-uppercase ftitle">首頁</h5>
+                    <ul>
+                        <li>
+                            <a href="index.html" style="text-decoration:none;" class="fword">最新消息</a>
+                        </li>
+                        <li>
+                            <a href="index.html" style="text-decoration:none;" class="fword">其他資訊</a>
+                        </li>
+                        <li>
+
+                    </ul>
+                </div>
+                <div class="col-md-2 col-6 footer-list">
+                    <h5 class="text-uppercase ftitle">最新消息</h5>
+                    <ul>
+                        <li>
+                            <a href="#" style="text-decoration:none; " class="fword">新興景點</a>
+                        </li>
+                        <li>
+                            <a href="#" style="text-decoration:none; " class="fword">心情分享</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="col-md-2 col-6 footer-list">
+                    <h5 class="text-uppercase ftitle">其他資訊</h5>
+                    <ul>
+                        <li>
+                            <a href="#" style="text-decoration:none; " class="fword">活動/優惠</a>
+                        </li>
+                        <li>
+                            <a href="#" style="text-decoration:none;" class="fword">旅遊誌</a>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="col-md-2 col-6 footer-list">
+                    <h5 class="text-uppercase">加入會員</h5>
+                    <ul>
+                        <li>
+                            <a href="login.php" style="text-decoration:none; " class="fword">登入</a>
+                        </li>
+                        <li>
+                            <a href="register.html" style="text-decoration:none;" class="fword">註冊</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>favor</title>
+    <link rel="stylesheet" href="./data.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.css">
+  
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<style type="text/css">
+    @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css");
+    
+    *{
+      margin:0;
+    padding: 0;
+    list-style: none;
+    font-family: "微軟正黑體",sans-serif;
+    }
+    html,body{
+        height: 100%;
+    }
+    body{
+        display: flex;
+  background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+    .loved{
+        height:100%;
+        width: 300px;
+        line-height: 2em;
+    }
+    .love-div{
+        display: flex;
+        font-size: 16px;
+        color:#000;
+        padding: 5px;
+        height: 50px;
+        line-height: 50px;
+    }
+    .love-div:hover{
+        background: rgba(255,255,255,.8);
+    }
+    .trip{
+        height: 100%;
+        width: 960px;
+        margin:auto;
+        overflow: auto;
+        position: relative;
+    }
+    .trip > p{
+        font-size: 30px;
+        font-weight: 800;
+        margin-top: 20px;
+        border-bottom: 1px solid #BEBEBE;
+        padding-bottom: 20px;
+    }
+    .trip > button{
+        position: absolute;
+        top:21px;
+        right: 30px;
+        background: transparent;
+        color:#fff;
+        width: 120px;
+        font-size: 14px;
+        border-radius: 5px;
+    }
+    #area-trip{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .btn{
+        padding: 5px;
+       width:60px;
+        height: 40px;
+        font-size: 10px;
+        border:1px solid #000;
+        text-align: center;
+        vertical-align: middle;
+    }
+    .form{
+      display:none;
+        background:rgba(0,0,0,0.5);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+    
+    .form-content{
+         width: 400px;
+        height: 180px;
+        border: 1px solid #000;
+         background: #fff;
+        position: absolute;
+        left:50%;
+        top:50%;
+        transform: translate(-50%,-50%);
+    }
+    form{
+       line-height: 2em; 
+    }
+    form input{
+        padding: 5px 10px;
+        border:1px solid #888;
+        border-radius: 5px;
+    }
+    
+    .trip-plan{
+        display: flex;
+        flex-direction: column;
+        border: 5px solid 		#84C1FF;
+        width:370px;
+        height:400px;
+        background: #fff;
+        box-shadow: 10px 20px 5px 	#004B97		;
+        border-radius:20px;
+        margin:120px 40px 80px;
+        position: relative;
+    }
+    .trip-plan .icon{
+        width: 150px;
+        height: 150px;
+       font-size: 85px;
+       color:#005AB5;
+        border-radius: 50%;
+        margin:-75px auto 0;
+        background:#fff;
+        line-height: 150px;
+        text-align: center;
+        position: relative;
+    }
+    .trip-plan .btn{
+        border: none;
+        background: transparent;
+        color:cornflowerblue;
+        font-size: 14px;
+        text-decoration: underline;
+        position: absolute;
+        top:100.2px;
+        right:13px;
+        width: 70px;
+    }
+    .trip-plan .time input{
+        border:none;
+       background: transparent;
+        font-size: 16px;
+        width:140px;
+    }
+    .trip-plan .btn:focus{
+         outline: none;
+    }
+    .trip-plan .btn:hover{
+        cursor: pointer;
+    }
+    .trip-plan > h2{
+        margin-left: 20px;
+    }
+    .trip-plan > p{
+        margin-left: 20px;
+    }
+    .trip-plan .icon:before{
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border-left:5px solid 		#84C1FF;
+        border-top: 5px solid 		#84C1FF;
+        border-right:5px solid transparent;
+        border-bottom:5px solid transparent;
+        transform: rotate(45deg);
+        top:-5px;
+        left:-5px;
+    }
+    .trip-plan .icon:hover .fa{
+        animation:  shake .2s infinite  linear alternate; 
+    }
+    @keyframes shake{
+        0% {transform: rotate(-10deg);}
+        100%{transform: rotate(10deg);}
+    }
+    .item-plan{
+        width:330px;
+        overflow: auto;
+        height: 250px;
+        padding: 10px;
+        box-sizing: border-box;
+        background:#eee;
+        align-self: center;
+        margin-top: 10px;
+    }
+    .item-plan .
+    [draggable="true"] {
+    /*
+   To prevent user selecting inside the drag source
+  */
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+    .link{
+      margin-left: 200px;
+        color: red; 
+        font-weight:900;
+    }
+    .toggle{
+        display: none;
+    }
+    ul{
+        margin:5px;
+    }
+    ul li{
+        display: inline-block;
+    }
+    ul li:hover{
+        border:solid 1px #000;
+    }
+   li:first-child{
+        width:20px;
+        height:20px;
+    }
+     li:nth-child(2){
+        width:20px;
+        height:20px;
+    }
+     li:nth-child(3){
+        width:20px;
+        height:20px;
+    }
+     li:last-child{
+        width:20px;
+        height:20px;
+    }
+</style>
+</head>
+<body>
+   <div class="loved " id="loved" ondrop="drop(event)" ondragover="allowDrop(event)" ondragenter="allowDrop(event)" 
+        data-role="drag-drop-container">
+    </div>
+    
+    <div class="trip" id="trip">
+        <p>我的行程</p>
+        <button class="btn" onclick="createTrip()">建立行程</button>
+        <div id="area-trip">
+        </div>
+    </div>
+    
+    <div class="form" id="form">
+        <div class="form-content">
+    <form  onsubmit="return tripSure();">
+    旅遊名稱:<input type="text" id="dateName" required>
+        <br/>
+    Date:<input type="text" class="datepicker" id="datepicker" required autocomplete="off">
+        <br/>
+    小筆記:<input type="number" id="dateNum">
+        <ul>
+        <li class="menu-color" style="background-color:#FF2D2D "></li>
+        <li class="menu-color" style="background-color:	#2828FF "></li>
+        <li class="menu-color" style="background-color:	#FFDC35 "></li>
+        <li class="menu-color" style="background-color:	#28FF28 "></li>
+        </ul>
+    <input type="submit"  value="確認" >
+    </form>
+        </div>
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
+<script>
+    $(function () {
+  $("#datepicker").datepicker({
+    dateFormat: "yy-mm-dd", //修改顯示順序
+  });
+});
+    let i=0;
+    let c=1;
+     const loved=document.getElementById('loved');
+    let str=``;
+    const loveStore=JSON.parse(localStorage.getItem('loveStores'));
+    console.log(loveStore);
+    loveStore.forEach(e=>{
+        str+=`<div class="love-div" draggable="true" id="drag${++i}" ondragstart="drag(event,false)" ondrag="dragg(event)"><p>${e}</p></div>`;
+    });
+    loved.innerHTML=str;
+    
+    function createTrip(){
+        document.getElementById('form').style.display='block';
+    }
+    
+    var xhr =new XMLHttpRequest();
+var itemData;
+xhr.open("get","./t.json");
+xhr.send();
+xhr.onload=function(){
+    itemData=JSON.parse(xhr.responseText).XML_Head.Infos.Info;
+}
+    
+    function getItem(e){
+         e.target.parentNode.parentNode.children[1].href="map.html";
+        console.log(e.target.parentNode.parentNode.children[4].children.length);  //取得<a href="map.html?a=b&b=c&c=d" target="_blank" id="url${++count}">
+        var itemLen=e.target.parentNode.parentNode.children[4].children.length;
+        var ur='';
+        if(itemLen!=0){
+            for(let i=0;i<itemLen;i++)
+                {
+                    if(i%2==0){
+                        console.log(e.target.parentNode.parentNode.children[4].children[i].children[1].textContent);
+                        let name=e.target.parentNode.parentNode.children[4].children[i].children[1].textContent;
+                        let item=itemData.find(el=>el.Name.includes(name));
+                        let lng=item.Px;
+                        let lat=item.Py;
+                        ur+=lng+'*'+lat+'/';
+                        e.target.parentNode.parentNode.children[1].href="map.html?"+ur;
+                    }
+                }
+        }
+        
+    }
+    
+       let count=0;
+    function tripSure(){
+        //console.log($(".timepicker:eq(1)").val());
+       var t=($(".timepicker"))||'';
+        const icon=["fa-gavel","fa-thumbs-up","fa-bell","fa-music","fa-bomb"];
+    var iconRan=Math.floor(Math.random()*5);
+        document.getElementById('form').style.display='none';
+        let name=document.getElementById('dateName').value;
+        let date=document.getElementById('datepicker').value;
+        let num=document.getElementById('dateNum').value;
+        const area=document.getElementById('area-trip');
+        let str=`<div class="trip-plan " >
+                 <div class="icon">
+                        <i class="fa ${icon[iconRan]}"></i>
+                 </div>
+                  <a href="map.html" target="_blank" id="url${++count}"><button onclick="getItem(event)" class="btn">地圖檢視</button></a>
+                 <h2>${name}</h2>
+                 <p>${date}</p>
+            <div ondrop="drop(event)" ondragover="allowDrop(event)" ondragenter="allowDrop(event)" 
+  data-role="drag-drop-container" id="color${c++}" class="item-plan">
+</div>
+   </div>`;
+        
+        area.innerHTML+=str;
+        let arr=[];
+        t.each(function(){
+            arr.push($(this).val());
+        });
+        for(let i=0;i<t.length;i++){
+            console.log(arr[i]);
+             $(".timepicker:eq(" + i + ")").timepicker({
+  timeFormat: "h:mm p", // 時間隔式
+  interval: 30, //時間間隔
+  minTime: "06", //最小時間
+  maxTime: "23:55pm", //最大時間
+  defaultTime:arr[i], //預設起始時間
+  startTime: "6:00", // 開始時間
+  dynamic: true, //是否顯示項目，使第一個項目按時間順序緊接在所選時間之後
+  dropdown: true, //是否顯示時間條目的下拉列表
+  scrollbar: true, //是否顯示捲軸
+});
+        }
+        /*for(let i=0;i<t.length;i++){
+             $(".timepicker").get(i).timepicker({
+  timeFormat: "h:mm p", // 時間隔式
+  interval: 30, //時間間隔
+  minTime: "06", //最小時間
+  maxTime: "23:55pm", //最大時間
+  defaultTime:$(this).val(), //預設起始時間
+  startTime: "6:00", // 開始時間
+  dynamic: true, //是否顯示項目，使第一個項目按時間順序緊接在所選時間之後
+  dropdown: true, //是否顯示時間條目的下拉列表
+  scrollbar: true, //是否顯示捲軸
+});
+        }*/
+        /*t.each(function(index){
+            console.log($(this).parent());
+                 $(".timepicker").timepicker({
+  timeFormat: "h:mm p", // 時間隔式
+  interval: 30, //時間間隔
+  minTime: "06", //最小時間
+  maxTime: "23:55pm", //最大時間
+  defaultTime:$(this).val(), //預設起始時間
+  startTime: "6:00", // 開始時間
+  dynamic: true, //是否顯示項目，使第一個項目按時間順序緊接在所選時間之後
+  dropdown: true, //是否顯示時間條目的下拉列表
+  scrollbar: true, //是否顯示捲軸
+});
+        });*/
+        return false;
+    }
+    
+ function dragg(e){
+     let  item=document.querySelectorAll(".link");
+    item.forEach(a=>{
+        if(e.target.previousSibling==a){
+            //移除link
+            removeElement(e.target.id);
+        }
+        if(e.target.nextSibling==a){
+            //移除link
+            removeElementNext(e.target.id);
+        }
+    });
+     
+     //如果容器是收藏且含有時間的話，刪除時間
+     let container=document.getElementById('loved');
+     if(e.target.childNodes.length==2)
+         {
+             e.target.removeChild(e.target.firstChild);
+         }
+ }
+function removeElementNext(elementId) {
+    // Removes an element from the document
+    var element = document.getElementById(elementId);
+    element.parentNode.removeChild(element.nextSibling);
+}
+function removeElement(elementId) {
+    // Removes an element from the document
+    var element = document.getElementById(elementId);
+    element.parentNode.removeChild(element.previousSibling);
+}
+
+
+function drag (e) {
+  console.log('dragStart');
+  e.dataTransfer.setData('text/plain', e.target.id);
+e.dataTransfer.setData('nowItem', e.target.textContent);
+    
+}
+
+function drop (e) {
+    let time=document.createElement('p');
+   time.className="time";
+    time.innerHTML="<input type='text' class='timepicker'>";
+  allowDrop(e);
+    var Itemlink=document.createElement('a');
+    Itemlink.innerHTML=`<i class="fa fa-arrow-down" aria-hidden="true"></i>`;
+     Itemlink.className="link";
+    console.log(e.target);
+    let nowItem=e.dataTransfer.getData('nowItem');
+  let id = e.dataTransfer.getData('text/plain');
+let  item=document.querySelectorAll(".love-div");
+    let itemContainer=document.querySelectorAll('.item-plan');
+  document.querySelectorAll('[data-role="drag-drop-container"]').forEach((item)=>{
+      if(item==e.target){
+          e.target.appendChild(document.getElementById(id));
+          itemContainer.forEach(el=>{
+              if(e.target==el&&document.getElementById(id).childNodes.length==1)
+                  {
+                     document.getElementById(id).prepend(time);
+                  }
+          })
+      }
+  });
+   
+ let lastItem=(document.getElementById(id).previousSibling); //取得上一個節點
+    //條件:上一個為景點並且在規劃區域
+    item.forEach(e=>{
+        itemContainer.forEach(el=>{
+           if(e==lastItem&&e.parentNode==el)
+               {
+                Itemlink.href="https://www.google.com.tw/maps/dir/"+lastItem.children[1].textContent+"/"+nowItem;
+                Itemlink.target="_blank";
+                Itemlink.title="Google Map最佳路徑";
+               lastItem.after(Itemlink);
+               console.log("https://www.google.com.tw/maps/dir/"+lastItem.textContent+"/"+nowItem );
+               }
+        })
+      
+    });
+  
+    $(".timepicker").timepicker({
+  timeFormat: "h:mm p", // 時間隔式
+  interval: 30, //時間間隔
+  minTime: "06", //最小時間
+  maxTime: "23:55pm", //最大時間
+  defaultTime: "6", //預設起始時間
+  startTime: "6:00", // 開始時間
+  dynamic: true, //是否顯示項目，使第一個項目按時間順序緊接在所選時間之後
+  dropdown: true, //是否顯示時間條目的下拉列表
+  scrollbar: true, //是否顯示捲軸
+});
+}
+    
+function allowDrop(e) {
+  e.preventDefault();
+e.stopPropagation();
+    return false;
+}
+    
+//旅遊卡背景
+const menuColor=document.querySelectorAll('.menu-color');
+    menuColor.forEach(e=>{
+        e.addEventListener('click',function(e){
+            var str=[];
+            var rgb=e.target.style.backgroundColor.split('(');
+            for(var i=0;i<3;i++){
+                str[i]=parseInt(rgb[1].split(',')[i]).toString(16);
+            }
+            str='#'+str[0]+str[1]+str[2];
+            console.log(e.target.style.backgroundColor);
+            console.log(str);
+            document.querySelector('.form-content').style.backgroundColor=str;
+        });
+    })
+</script>
+</body>
+</html>

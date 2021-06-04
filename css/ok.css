@@ -1,0 +1,410 @@
+/*=============================================
+=                  General                    =
+=============================================*/
+
+
+
+* {
+    box-sizing: border-box;
+    font-family: 'cwTeXYen', sans-serif;
+}
+
+html,body {
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
+    .container666{
+    overflow-x: hidden;
+   } 
+
+   .description {
+    margin-top: 50px;
+    text-align: center;
+    color: #3F3F3F;
+    transition: opacity 0.3s ease;
+  }
+  .description a {
+    color: rgb(56, 48, 122);
+    text-decoration: none;
+  }
+
+   .title123 {
+       max-width: 100%;
+       font-weight: 100;
+       font-size: 3em;
+   }
+   
+   #openingLottie {
+    width: 90vw;
+       height: 50vh;
+   }
+   
+   .btn__group {
+       display: flex;
+       margin-top: 5em;
+       justify-content:center;
+       align-items: center;
+       font-family: 'cwTeXYen', sans-serif;
+   
+   }
+   
+   .btn{
+       color: #ffffff;
+   }
+   
+   #lottie-start{
+       background-color: #4f4f4f;
+   }
+   #lottie-pause{
+       background-color: #4f4f4f;
+   }
+   
+   #lottie-stop{
+       background-color: #4f4f4f;
+   }
+   
+   #lottie :hover{
+       background-color: #505050;
+   }
+    button:focus {
+        outline: none;
+        
+    }
+
+/*=============================================
+=                  Navbar                     =
+=============================================*/
+
+.navbar {
+    box-shadow: 0 3px 18px rgba(0, 0, 0, .11);
+}
+
+/*=============================================
+=                  Header                     =
+=============================================*/
+h2{
+    font-size: 3vw;
+}
+
+h3{
+    font-size: 2.0vw;
+}
+
+
+.jumbotron {
+    padding: 200px 0px;
+    margin-bottom: 0px;
+    border-radius: 0px;
+}
+
+#header {
+    background-image: url('../img/taishan.jpg');
+    background-size: cover;
+    /* 固定背景圖 */
+    background-attachment: fixed;
+    position: relative;
+}
+
+#header:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+}
+
+#header>.container {
+    position: relative;
+    z-index: 5;
+}
+
+/*=============================================
+=                  Intro                      =
+=============================================*/
+
+/*=============================================
+=                  Features                   =
+=============================================*/
+
+/*=============================================
+=                  Reviews                    =
+=============================================*/
+
+.carousel-indicators>li {
+    border-radius: 50%;
+}
+
+/*=============================================
+=                  Gallery                    =
+=============================================*/
+
+/* TODO: 設定Hover特效 */
+
+
+
+
+
+
+
+
+/*=============================================
+=                  Start Now                  =
+=============================================*/
+
+/*=============================================
+=                   Footer                    =
+=============================================*/
+
+h6{
+    font-size: 2vw;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-end p {
+    font-size: 8px;
+    margin: 0;
+}
+
+#goBackBtn {
+    width: 40px;
+    height: 40px;
+    border:none;
+}
+
+.space{
+    display: none;
+    padding:5vh 0px;
+}
+
+/* 其他商品 */
+.other{
+  
+    padding-right:9vw;
+    padding-left:9vw;
+    display: flex;
+    flex-direction:row ;
+    
+   
+}
+
+
+
+
+.other-product{
+    margin-top:2vh;
+    margin-right:2vw;
+    margin-left:1.8vw;
+    border-radius:1vw; 
+    width: 20vh;
+    padding: 1.2% 0.4%;
+    background-color:rgb(100, 93, 86);
+}
+
+.title1{
+    font-size: 200%;    
+  }
+
+  .title2{
+    font-size: 180%; 
+    padding-top: 0.8vw;      
+    padding-bottom: 0.8vw;  
+  }
+
+  .title22{
+    display: none;
+    font-size: 180%; 
+    padding-top: 0.8vw;      
+    padding-bottom: 0.8vw;  
+  }
+  .title23{
+    display: none;
+    font-size: 2vw; 
+    padding-top: 0.8vw;      
+    padding-bottom: 0.8vw;  
+  }
+
+  .name{
+      font-size:120%
+  }
+
+  
+.bttn{
+    width:100%
+}  
+.top{
+    margin-top: 5vw;
+}
+
+.row{
+    padding:0 2vw;
+}
+
+/* row 的間距 */
+.top30{
+    margin-top: 30px;
+}
+
+.mtop20{
+   
+    margin-top: 20px;
+}
+
+.mtop30{
+   
+    margin-top: 30px;
+}
+
+.mtop15{
+    margin-top: 15px;
+}
+
+.mtop3p{
+    margin-top: 3%;
+}
+
+.mtop10p{
+    margin-top: 10%;
+}
+
+.mbottom20{
+    margin-bottom: 20px;
+}
+
+.mright23{
+    margin-right: 3vw;
+}
+.mleft15{
+    margin-top: 3%;
+    margin-left: 4%;
+}
+
+.bottom{
+    margin-bottom: 100px;
+}
+
+.input{
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-left: 60px;
+    margin-right: 10px;
+    /* margin-left: 10px;
+    margin-right: 10px; */
+  }
+
+@media (max-width: 1280px) {
+    h4{
+        font-size:1.5vw;
+    }
+}
+
+@media (max-width: 1080px) {
+
+    .title2{
+        display: none;
+    }
+    .title22{
+        display: block;
+    }
+    h4{
+        font-size:1.5vw;
+    }
+    h6{
+        font-size: 3.5vw;
+    }
+    .choose{
+        height: 38vh;       
+    }
+}
+
+@media (max-width: 768px) {
+    .space{
+        display: block;
+    }
+    .title22{
+        display: none;
+    }
+    .title23{
+        display: block;
+    }
+    h3{
+        padding: 0 0;
+        margin: 0 0;
+        font-size: 2.0vw;
+    }
+    h5{
+        font-size: 2vw;
+    }
+    a{
+        font-size: 2vw;
+    }
+    h6{
+        padding-top: 1vw;
+        font-size: 3vw;
+    }
+
+    .btn-lg{
+        font-size: 2.0vw;
+    }
+    .mright23{
+        margin-right: 2.0vw;
+    }
+    .top{
+        margin-top: 0;
+    }
+    .bottom{
+        margin-bottom: 5vw;
+    }
+}
+
+@media (max-width: 320px) {
+    h2{
+        font-size: 6vw;
+    }
+
+    h3{
+        font-size:6vw;
+    }
+    h4{
+        font-size:4.0vh;
+    }
+    h6{
+        padding-top: 3vw;
+        font-size: 6vw;
+    }
+    .title23{
+        font-size: 5vw;
+    }
+    .btn-lg{
+        font-size: 5vw;
+    }
+    .mright23{
+        margin-right: 6.0vw;
+        
+    }
+    .btn-dark{
+        margin-top: 3vw;
+    }
+    .other-product{
+        height: 70vh;
+    }
+
+    h5{
+        font-size: 5vw;
+    }
+    a{
+        font-size: 4.5vw;
+    }
+}
+

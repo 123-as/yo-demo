@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    
+    
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.css"> 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css">
+<meta charset="utf-8">
+<title>map</title>
+<style type="text/css">
+@import url("https://fonts.googleapis.com/earlyaccess/cwtexyen.css" rel="stylesheet");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css");
+    
+/*  *星號代表html所有標籤的含意*/
+*{
+      margin:0;
+    padding: 0;
+    list-style: none;
+    font-family: "圓體 cwTeXYen",sans-serif;
+    }
+html,body{
+  height: 100%;
+}
+.slide-menu{
+    background: linear-gradient(0deg,#3381b0,#c2196c);
+    height:100%;
+    width:400px;
+    position: fixed;
+    z-index: 10000000; 
+    display: flex;
+    flex-direction: column;
+    box-shadow: 5px 0 10px hsla(240,40%,20%,0.6);
+    padding: 20px 0;
+    transform: translateX(-100%);
+    transition: 0.3s;
+    }
+    
+    nav a{
+        display: block;
+        color: #fff;
+        text-decoration: none;
+        padding: 10px;
+        position: relative;
+    }
+    nav a+a::before{
+        content: "";
+        border-top:1px solid #fff;
+        position: absolute;
+        left: 10px;
+        right: 10px;
+        top:0;
+    }
+    .slide-menu form{
+        display: flex;
+        margin: 0 10px;
+        border: 1px solid #fff;
+        border-radius: 100px;
+    }
+    .slide-menu label{
+        width:30px;
+        height: 80px;
+        background-color: #000;
+        color:#fff;
+        position: absolute;
+        right:-30px;
+        top:0;
+        bottom:0;
+        margin: auto;
+        line-height: 80px;
+        text-align: center;
+        font-size: 20px;
+        border-radius: 0px 10px 10px 0;
+        
+    }
+    #side-menu-switch{
+        position: absolute;
+        opacity: 0;
+    }
+    #side-menu-switch:checked+.slide-menu{
+        transform:translate(0);
+    }
+    #side-menu-switch:checked+.slide-menu label .fa{
+        transform:scale(-1);
+    }
+    .slide-menu form input{
+        border:none;
+        padding: 5px 10px;
+        background-color: transparent;
+        width:230px;
+        outline: none;
+    }
+    .slide-menu form button{
+        padding: 5px 10px;
+        border:none;
+        background-color: transparent;
+        outline: none;
+    }
+#map { 
+    height: 100%; 
+    }
+.marker-cluster-small {
+		background-color: rgba(181, 226, 140, 0.6);
+		}
+	.marker-cluster-small div {
+		background-color: rgba(110, 204, 57, 0.6);
+		}
+
+	.marker-cluster-medium {
+		background-color: rgba(241, 211, 87, 0.6);
+		}
+	.marker-cluster-medium div {
+		background-color: rgba(240, 194, 12, 0.6);
+		}
+
+	.marker-cluster-large {
+		background-color: rgba(253, 156, 115, 0.6);
+		}
+	.marker-cluster-large div {
+		background-color: rgba(241, 128, 23, 0.6);
+		}
+
+	.marker-cluster {
+		background-clip: padding-box;
+		border-radius: 20px;
+		}
+	.marker-cluster div {
+		width: 30px;
+		height: 30px;
+		margin-left: 5px;
+		margin-top: 5px;
+
+		text-align: center;
+		border-radius: 15px;
+		font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
+		}
+	.marker-cluster span {
+		line-height: 30px;
+		}
+    
+    
+    .list{
+        height: 500px;
+        overflow: auto;
+        overflow-x: hidden;
+        margin-top: 25px;
+    }
+    .content{
+       border: 1px #000 solid;
+        margin: 8px;
+        padding:10px;
+        background:	#D1E9E9;
+        border-radius:5px;
+    }
+    .content:hover{
+        cursor: pointer;
+    }
+    .content h5{
+        color:#8a2be2;
+        font-size: 20px;
+        font-weight: 900;
+        border-bottom: 2px solid #9370db;
+    }
+    .content p{
+        padding-top:8px;
+    }
+    .areaList{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .countyList,.townList{
+        width:80%;
+        height: 30px;
+        padding: 2px;
+        border-radius: 5px;
+        border: 1px solid	#8E8E8E;
+    }
+    .countyList{
+        margin-bottom: 8px;
+    }
+    
+    .dialog{
+        
+    }
+</style>
+</head>
+<body>
+    <input type="checkbox" name="" id="side-menu-switch">
+<div class="slide-menu">
+    <form>
+    <input type="search">
+    <button><i class="fa fa-search"></i></button>
+    </form>
+    <nav>
+    <a href="#"><i class="fa fa-check-circle-o" aria-hidden="true"></i>
+個人資料
+    </a>
+    <a href="#">
+        <i class="fa fa-heart" aria-hidden="true"></i>
+地圖通
+    </a>
+    </nav>
+    <label for="side-menu-switch">
+     <i class="fa fa-angle-right"></i>
+    </label>
+    <!-- ...縣市選單... -->
+    <div class="areaList">
+    <select name="" class="countyList" id="city"></select>
+    <select name="" class="townList"  id="town"></select>
+    </div>
+    
+    <!-- ...景點選單... -->
+    <div id="list" class="list">
+    </div>
+    
+    <!-- ...資訊欄... -->
+    <div class="dialog">
+       
+    </div>
+</div> 
+    
+<div id="map">
+</div>
+    
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js"></script>
+<script>
+var map=L.map('map',{center:[22.604799,120.2976256],zoom:16});
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+var markers=new L.MarkerClusterGroup().addTo(map);
+
+    
+    
+var xhr = new XMLHttpRequest();
+var mapData;
+xhr.open("get","https://cors-anywhere.herokuapp.com/https://gis.taiwan.net.tw/XMLReleaseALL_public/scenic_spot_C_f.json");
+xhr.send();   
+    xhr.onload = function(){
+   mapData= JSON.parse(xhr.responseText).XML_Head.Infos.Info;
+ for(let i =0;mapData.length>i;i++){
+   markers.addLayer(L.marker([mapData[i].Py,mapData[i].Px]).bindPopup(mapData[i].Name));
+ }
+        map.addLayer(markers);
+    }
+ 
+/*縣市選單*/
+
+const countySelector=document.querySelector(".countyList");
+var cityData = new XMLHttpRequest();
+cityData.open("get","./cityName.json");
+cityData.send();   
+    cityData.onload = function(){
+    var city=JSON.parse(cityData.responseText);
+        addCounty(city);
+        countySelector.addEventListener('change',function(){
+           const citySelected = document.getElementById('city').value;
+            addTown(citySelected,city);
+        });
+ }
+function addCounty(data){
+     let countyStr="";
+    countyStr +='<option>請選擇縣市</option>';
+    for(let i=0;i<data.length;i++){
+       const cityName=data[i].CityName;
+        
+        countyStr+=`<option value="${cityName}">${cityName}</option>`;
+    }
+    countySelector.innerHTML=countyStr;
+ };
+ 
+    
+const townSelector = document.querySelector('.townList');
+townSelector.innerHTML='<option>請選擇鄉鎮區</option>';
+function addTown(citySelected,data){
+    let townStr = `<option value="">請選擇鄉鎮區</option>`;
+    for(let i=0;i<data.length;i++){
+       let cityMatch=data[i].CityName;
+        if(cityMatch==citySelected){
+            for(let t=0;t<data[i].AreaList.length;t++)
+                {
+                    townStr += `<option value="${data[i].AreaList[t].AreaName}">${data[i].AreaList[t].AreaName}</option>`
+                }
+        }
+    }
+    townSelector.innerHTML = townStr;
+    townSelector.addEventListener('change', function(){
+        var city=document.getElementById('city').value;
+        var town =document.getElementById('town').value;
+        geoTownView(city,town);});
+}
+    
+function geoTownView(city,town){
+    let str='';
+    let t=[];
+    
+    
+ for(let i =0;mapData.length>i;i++){
+     let cityTar=mapData[i].Region;
+     let townTar=mapData[i].Town;
+    
+     if(cityTar==city&&townTar==town)
+         {
+            map.setView([mapData[i].Py,mapData[i].Px], 17);
+             
+             str=createHtml(mapData[i],str);
+         }
+ }
+        document.getElementById("list").innerHTML=str;
+        const sightNum=document.querySelectorAll(".content");
+        sightNum.forEach((item)=>{
+           item.addEventListener('click',function(){
+               map.setView([item.dataset.lat,item.dataset.lng],18);
+           }) 
+        });
+    }  
+
+function createHtml(data,str){
+    str+= `<div class="content" data-lat=${data.Py} data-lng=${data.Px}>
+    <h5>${data.Name}</h5>
+    <p><i class="fa fa-home" aria-hidden="true"></i> ${data.Add}</p>
+    <p><i class="fa fa-phone" aria-hidden="true"></i> ${data.Tel}</p>
+    </div>`;
+
+    return str;
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,612 @@
+/*=============================================
+=                  General                    =
+=============================================*/
+
+
+
+* {
+    box-sizing: border-box;
+    font-family: 'cwTeXYen', sans-serif;
+}
+
+html,body {
+    max-width: 100%;
+    overflow-x: hidden;
+
+}
+
+button:focus {
+    outline: none;
+}
+
+/*=============================================
+=                  Navbar                     =
+=============================================*/
+
+.navbar {
+    box-shadow: 0 3px 18px rgba(0, 0, 0, .11);
+}
+
+/*=============================================
+=                  Header                     =
+=============================================*/
+
+.lead1{
+    font-size:5vw;
+    font-weight: 300;
+    line-height: 1.2; 
+}
+p{
+    font-size: 2vw;
+    font-family: '微軟正黑體';
+}
+.lead2{
+    padding:0px 10px;
+    font-size: 2vw;
+    font-weight: 300;
+}
+h2{
+    font-size: 3vw;
+}
+
+h3{
+    font-size: 2.0vw;
+}
+
+
+.jumbotron {
+    padding: 200px 0px;
+    margin-bottom: 0px;
+    border-radius: 0px;
+}
+
+#header {
+    background-image: url('../img/主視覺底圖.png');
+    background-size: cover;
+    /* 固定背景圖 */
+    background-attachment: fixed;
+    position: relative;
+}
+
+#header:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.664);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+}
+
+#header>.container {
+    position: relative;
+    z-index: 5;
+}
+
+/*=============================================
+=                  Intro                      =
+=============================================*/
+
+/*=============================================
+=                  Features                   =
+=============================================*/
+
+/*=============================================
+=                  Reviews                    =
+=============================================*/
+
+.carousel-indicators>li {
+    border-radius: 0%;
+}
+
+/*=============================================
+=                  Gallery                    =
+=============================================*/
+
+/* TODO: 設定Hover特效 */
+
+
+
+
+
+
+
+
+/*=============================================
+=                  Start Now                  =
+=============================================*/
+
+/*=============================================
+=                   Footer                    =
+=============================================*/
+h6{
+    font-size: 2vw;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-end p {
+    font-size: 8px;
+    margin: 0;
+}
+
+#goBackBtn {
+    width: 40px;
+    height: 40px;
+    border:none;
+}
+
+.space{
+    padding:10px 0px;
+}
+
+/* 其他商品 */
+.other{
+  
+    padding-right:9vw;
+    padding-left:9vw;
+    display: flex;
+    flex-direction:row ;
+    
+   
+}
+
+.description {
+    margin-top: 50px;
+    text-align: center;
+    color: #999;
+    transition: opacity 0.3s ease;
+  }
+  .description a {
+    color: #4A9DF6;
+    text-decoration: none;
+  }
+  .btnn.is-open ~ .description {
+    opacity: 0;
+  }
+  .btnn {
+    
+    border-top-width: 15x;
+    border-bottom-width: 15x;
+    display: block;
+    position: relative;
+    width: 100%;
+    /* height: 65px; */
+    transition: width 0.8s cubic-bezier(0.23, 1, 0.32, 1), height 0.8s cubic-bezier(0.23, 1, 0.32, 1), transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+    transform-origin: 50% 50%;
+    text-align: center;
+  }
+  .btn-front {
+    
+    
+    position: absolute;
+    display: block;
+    width: 100%;
+    /* height: 100%; */
+    border-radius: 5px;
+    line-height: 80px;
+    background-color:rgb(100, 93, 86);
+    color: #fff;
+    cursor: pointer;
+    backface-visibility: hidden;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    transition: background 0.15s ease, line-height 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .btn-front:hover {
+    background-color: #212529;
+  }
+  .btnn.is-open .btn-front {
+    pointer-events: none;
+    line-height: 160px;
+  }
+  .btn-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #3F3F3F;
+    color: #222;
+    transform: translateZ(-2px) rotateY(180deg) ;
+    overflow: hidden;
+    transition: box-shadow 0.8s ease;
+  }
+  .btn-back p {
+    margin-top: 27px;
+    margin-bottom: 25px;
+  }
+  .btn-back button {
+    padding: 12px 20px;
+    width: 30%;
+    margin: 0 5px;
+    background-color: transparent;
+    border: 0;
+    border-radius: 2px;
+    font-size: 1em;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    transition: background 0.15s ease;
+  }
+  .btn-back button:focus {
+    outline: 0;
+  }
+  .btn-back button.yes {
+    background-color: #FFFFFF;
+    color:#FFFFFF;
+    
+  }
+  .btn-back button.yes:hover {
+    background-color: #FFFFFF;
+  }
+  .btn-back button.no {
+    color: #FFFFFF;
+  }
+  .btn-back button.no:hover {
+    background-color:  #080056;
+  }
+  .ask{
+    color:#FFFFFF;
+  }
+  .wordyes{
+      color:#3F3F3F;
+  }
+  .btnn.is-open .btn-back {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  }
+  .btnn[data-direction="left"] .btn-back, .btn[data-direction="right"] .btn-back {
+    transform: translateZ(-2px) rotateY(180deg);
+  }
+  .btnn.is-open {
+    width: 37vw;
+    height: 18vh;
+  }
+  .btnn[data-direction="top"].is-open {
+    transform: rotateX(180deg);
+  }
+  .btnn[data-direction="right"].is-open {
+    transform: rotateY(180deg);
+  }
+  .btnn[data-direction="bottom"].is-open {
+    transform: rotateX(-180deg);
+  }
+  .btnn[data-direction="left"].is-open {
+    transform: rotateY(-180deg);
+  }
+  
+
+
+.other-product{
+    margin-top:2vh;
+    margin-right:2vw;
+    margin-left:1.8vw;
+    border-radius:1vw; 
+    width: 20vh;
+    padding: 1.2% 0.4%;
+    background-color:rgb(100, 93, 86);
+}
+
+.title1{
+    font-size: 200%;    
+  }
+
+  .title2{
+    font-size: 180%; 
+    padding-top: 0.8vw;      
+    padding-bottom: 0.8vw;  
+  }
+
+  .title22{
+    display: none;
+    font-size: 180%; 
+    padding-top: 0.8vw;      
+    padding-bottom: 0.8vw;  
+  }
+  .title23{
+    display: none;
+    font-size: 2vw; 
+    padding-top: 0.8vw;      
+    padding-bottom: 0.8vw;  
+  }
+
+  .name{
+      font-size:120%
+  }
+
+  
+.bttn{
+    width:100%
+}  
+.top{
+    margin-top: 1vw;
+}
+
+.row{
+    padding:0 2vw;
+}
+
+/* row 的間距 */
+.top30{
+    margin-top: 30px;
+}
+
+.mtop20{
+   
+    margin-top: 20px;
+}
+
+.mtop30{
+   
+    margin-top: 30px;
+}
+
+.mtop15{
+    margin-top: 15px;
+}
+
+.mtop3p{
+    margin-top: 3%;
+}
+
+.mtop10p{
+    margin-top: 10%;
+}
+
+.mbottom20{
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.mright23{
+    margin-right: 1.5vw;
+}
+.mleft15{
+    margin-top: 3%;
+    margin-left: 4%;
+}
+
+.bottom{
+    margin-bottom: 100px;
+}
+
+.introtext{
+    font-size: 21px;
+}
+.intromain{
+    font-size: 25px;
+    font-weight: 400px;
+    margin-bottom: 25px;
+}
+.btn-block{
+    width: 100%;
+    padding: 0;
+}
+
+
+
+
+@media (max-width: 1280px) {
+    .title2{
+        display: none;
+    }
+    .title22{
+        display: block;
+    }
+    h4{
+        font-size:1.5vw;
+    }
+    h6{
+        font-size: 3.5vw;
+    }
+    .choose{
+        height: 38vh;       
+    }
+    /* .btn-dark{
+        margin-top: 1.0vw;
+    } */
+}
+
+@media (max-width: 1080px) {
+    .title2{
+        display: none;
+    }
+    .title22{
+        display: block;
+    }
+    h4{
+        font-size:1.5vw;
+    }
+    h6{
+        font-size: 3.5vw;
+    }
+    .choose{
+        height: 38vh;       
+    }
+    /* .btn-dark{
+        margin-top: 1.0vw;
+    } */
+}
+@media (max-width: 1028px) {
+    p{
+        font-size: 1.5vw;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .btn{
+        border: 0.5vw solid transparent;
+    }
+
+    .title22{
+        display: none;
+    }
+    .title23{
+        display: block;
+    }
+    h3{
+        padding: 0 0;
+        margin: 0 0;
+        font-size: 2.0vw;
+    }
+    h5{
+        font-size: 2vw;
+    }
+    a{
+        font-size: 2vw;
+    }
+    h6{
+        padding-top: 1vw;
+        font-size: 3vw;
+    }
+
+    .btn-lg{
+        font-size: 2.0vw;
+    }
+    .mright23{
+        margin-right: 1.3vw;
+    }
+    .top{
+        margin-top: 0;
+    }
+    .bottom{
+        margin-bottom: 5vw;
+    }
+
+    .lead1{
+        font-size:6vw;
+        font-weight: 300;
+        line-height: 1.2; 
+    }
+    .lead2{
+        padding:0px 10px;
+        font-size: 3vw;
+        font-weight: 300;
+    }
+    p{
+        font-size: 2.3vw;
+    }
+    h1{
+        font-size: 4.5vw;
+    }
+    h2{
+        font-size: 4vw;
+    }
+    .btnn[data-direction="top"] .btn-back, .btnn[data-direction="buttom"] .btn-back {
+        transform: translateZ(-2px) rotateY(180deg);
+      }
+      .btnn.is-open {
+        width: 35.5vw;
+        height: 15vh;
+      }
+      .btnn[data-direction="top"].is-open {
+        transform: rotateX(180deg);
+      }
+      .btnn[data-direction="right"].is-open {
+        transform: rotateY(180deg);
+      }
+      .btnn[data-direction="bottom"].is-open {
+        transform: rotateX(-180deg);
+      }
+      .btnn[data-direction="left"].is-open {
+        transform: rotateY(-180deg);
+      }
+      .btn-front{
+          line-height:40px;
+      }
+      .btn-dark{
+        margin-top: 0.5vw
+    }
+}
+
+@media (max-width: 320px) {
+    h2{
+        font-size: 6vw;
+    }
+
+    h3{
+        font-size:6vw;
+    }
+    h4{
+        font-size:4.0vh;
+    }
+    h6{
+        padding-top: 3vw;
+        font-size: 6vw;
+    }
+    .title23{
+        font-size: 5vw;
+    }
+    .btn-lg{
+        font-size: 5vw;
+    }
+    .mright23{
+        margin-right: 3.5vw;
+        
+    }
+    .btn-dark{
+        margin-top: 3vw;
+    }
+    .other-product{
+        height: 70vh;
+    }
+
+    h5{
+        font-size: 5vw;
+    }
+    a{
+        font-size: 5vw;
+    }
+    .lead1{
+        font-size:12vw;
+        font-weight: 300;
+        line-height: 1.2; 
+        color: white;
+    }
+    .lead2{
+        padding:0px 10px;
+        font-size: 6vw;
+        font-weight: 300;
+        color: white;
+    }
+    p{
+        font-size: 5vw;
+    }
+    h1{
+        font-size: 7vw;
+    }
+    .btnn[data-direction="top"] .btn-back, .btnn[data-direction="buttom"] .btn-back {
+        transform: translateZ(-2px) rotateY(180deg);
+      }
+      .btnn.is-open {
+                  width: 92vw;
+        height: 25vh;
+      }
+      .btnn[data-direction="top"].is-open {
+        transform: rotateY(180deg);
+      }
+      .btnn[data-direction="right"].is-open {
+        transform: rotateY(180deg);
+      }
+      .btnn[data-direction="bottom"].is-open {
+        transform: rotateX(-180deg);
+      }
+      .btnn[data-direction="left"].is-open {
+        transform: rotateY(-180deg);
+      }
+    .carousel{
+        margin: 0;
+    }
+    .introtext{
+        font-size: 15px;
+    }
+    .intromain{
+        font-size: 20px;
+    }
+}
+

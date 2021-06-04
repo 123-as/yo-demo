@@ -1,0 +1,1188 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    
+<link rel="stylesheet" href="./data.css">
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.css"> 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css">
+    
+<link rel="icon" href="img/title_Horizontal.png?v=<?=time()?>">
+
+
+<link rel="stylesheet" href="cssS/bootstrap.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<title>溜溜溜。走</title>
+<style type="text/css">
+@import url("https://fonts.googleapis.com/earlyaccess/cwtexyen.css" );
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css");
+    
+/*  *星號代表html所有標籤的含意*/
+    
+*{
+      margin:0;
+    padding: 0;
+    list-style: none;
+    font-family: 'cwTeXYen',sans-serif;
+    }
+    html,body{
+    height: 100%;
+    }
+    
+        .navbar {
+        box-shadow: 0 3px 18px #3D3D3D;
+    }
+    .nav-item a:hover{
+        text-decoration: none;
+    }
+        .input {
+        text-align: center;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        padding-left: 60px;
+        margin-right: 10px;
+    }
+        
+    .slide-menu{
+        /* background: linear-gradient(180deg,#3381b0,#c2196c); */
+        background: linear-gradient(180deg,#3D3D3D,#000);
+        height:100%;
+        width:400px;
+        position: fixed;
+        z-index: 1001; 
+        display: flex;
+        flex-direction: column;
+        box-shadow: 5px 0 10px hsla(240,40%,20%,0.6);
+    padding: 20px 0;
+        transform: translateX(-100%);
+        transition: 0.3s;
+        top:63.4px;
+        }
+        
+        /*導覽列選項hover */
+        .navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus {
+        color:white;
+        background-color: #3C3C3C;
+        border-radius: 10px;
+        }
+
+    .slide-menu .form{
+            display: flex;
+            margin: 0 30px 0px;
+            border:1px solid rgba(255,255,255,.4);
+            border-radius: 100px;
+            background-color: #fff;
+        }
+        
+        .slide-menu .label{
+            width:30px;
+            height: 80px;
+            background-color: #000;
+            color:#fff;
+            position: absolute;
+            right:-30px;
+            top:0;
+            bottom:80px;
+            margin: auto;
+            line-height: 80px;
+            text-align: center;
+            font-size: 20px;
+            border-radius: 0px 10px 10px 0;
+            
+        }
+        #side-menu-switch{
+            position: absolute;
+            opacity: 0;
+        }
+        #side-menu-switch:checked+.slide-menu{
+            transform:translate(0);
+        }
+        #side-menu-switch:checked+.slide-menu label .fa{
+            transform:scale(-1);
+        }
+    .form input{
+            border: none;
+            padding: 5px 10px;
+            width:290px;
+            /* background: transparent; */
+            color:#000;
+            border-radius: 100px;
+            /* background-color: #fff; */
+        }
+        .form input:focus,form button:focus{
+            outline: none;
+        }
+        .form button{
+            border: none;
+            padding: 5px 10px;
+            width: 60px;
+            background: transparent; 
+            font-size: 15px;
+            border-radius: 100px;
+        }
+        .form button:hover{
+            border: none;
+            padding: 5px 10px;
+            width: 60px;
+            /* background: transparent;  */
+            font-size: 17px;
+            border-radius: 100px;
+            color: #CCCCCC;
+            background-color: #080056;
+        }
+        
+    #map { 
+        height: 100%; 
+        }
+    .marker-cluster-small {
+            background-color: rgba(181, 226, 140, 0.6);
+            }
+        .marker-cluster-small div {
+            background-color: rgba(110, 204, 57, 0.6);
+            }
+
+        .marker-cluster-medium {
+            background-color: rgba(241, 211, 87, 0.6);
+            }
+        .marker-cluster-medium div {
+            background-color: rgba(240, 194, 12, 0.6);
+            }
+
+        .marker-cluster-large {
+            background-color: rgba(253, 156, 115, 0.6);
+            }
+        .marker-cluster-large div {
+            background-color: rgba(241, 128, 23, 0.6);
+            }
+
+        .marker-cluster {
+            background-clip: padding-box;
+            border-radius: 20px;
+            }
+        .marker-cluster div {
+            width: 30px;
+            height: 30px;
+            margin-left: 5px;
+            margin-top: 5px;
+
+            text-align: center;
+            border-radius: 15px;
+            font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
+            }
+        .marker-cluster span {
+            line-height: 30px;
+            }
+        
+        
+        .list{
+            height: 500px;
+            overflow: auto;
+            overflow-x: hidden;
+            margin-top: 25px;
+        }
+        .content{
+        border: 1px #000 solid;
+            margin-left: 15px;
+            margin-right: 15px;
+            margin-top: 8px;
+            padding:30px 10px 10px;
+            background: linear-gradient(60deg,#FFF,#CCC);
+            border-radius:5px;
+            position: relative;
+        }
+        .content:hover{
+            cursor: pointer;
+        }
+        .content h5{
+            color:#080056;
+            font-size: 18px;
+            font-weight: 0;
+            border-bottom: 2px solid #080056;
+        }
+        .content p{
+            padding-top:8px;
+        }
+        .content .fav{
+            position: absolute;
+            top:10px;
+            left: 10px;
+        }
+        .areaList{
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .countyList,.townList{
+            width:80%;
+            height: 30px;
+            padding: 2px;
+            border-radius: 5px;
+            border: 1px solid	#8E8E8E;
+            font-size: 15px;
+            background: linear-gradient(180deg,#FFF,#CCCCCC);
+        }
+        .countyList{
+            margin-bottom: 15px;
+        }
+        
+        .menu-btn{
+            position: absolute;
+            top: 0px;
+            right: 8px;
+            cursor: pointer;
+            transform: scale(0.7) rotate(180deg);
+        }
+        
+        .menu-btn span{
+            color:#fff;
+            opacity: 0;
+        }
+        #menu-control:checked ~ .nav{
+            left:0;
+        }
+        #menu-control{
+            position: absolute;
+            opacity: 0;
+            left:-1000px;
+        }
+        .nav{
+            width:400px;
+            height: 87%;
+            background: linear-gradient(180deg,#3D3D3D,#000);
+            position: absolute;
+            left:-100%;
+            transition: 0.5s;
+            top:0;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        .nav .pic{
+            width: 383px;
+            height: 300px;
+            position: relative;
+        }
+        .nav .pic #img{
+            width: 100%;
+            height:100%;
+            object-fit: cover;
+        }
+        .nav #item-content{
+        color:#fff;    
+        }
+        
+        .close{
+            color:#fff;
+            position: absolute;
+            top: 5%;
+            right: 2%;
+            
+        }
+        .close span{
+            cursor: pointer;
+            display: block;
+            width:20px;
+            height: 20px;
+            border-radius: 50%;
+            text-align: center;
+            background: rgba(0,0,0,0.7);
+        }
+        .close span:hover{
+            transform: scale(1.2);
+        }
+        #name{
+            color: azure;
+            /* border-bottom: 1px solid #fff; */
+            font-size: 25px;
+            padding: 8px;
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+        
+        
+        .love{
+            color: red;
+        }
+        .love.hide{
+            display: none;
+        }
+        .loved{
+            color: red;
+            display: none;
+        }
+        .loved.show{
+            display: block;
+        }
+        
+        .scroll{
+            overflow: hidden;
+            padding: 20px;
+            line-height: 1.6;
+            cursor: default;
+        }
+        .nav .active{
+            cursor: grab;
+        }
+        
+        .my-love{
+            position: relative;
+        }
+        .my-love .love-btn{
+            position: absolute;
+            top:-36px;
+            right: 40px;
+            border-radius: 5px;
+            padding: 2px;
+        }
+        .condition{
+            background: #000;
+            width: 320px;
+            height: 100px;
+            margin: 0 auto ;
+            padding: 5px 10px;
+            display: none;
+        }
+        .con-list{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 5px;
+        }
+        .condition p{
+            color:#fff;
+        }  
+        .condition a{
+            margin: 0 5px 0;
+            color:#fff;
+        }
+        .condition a:hover{
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        
+        .rating{
+            width: 125px;
+            margin-left: -18px;
+        }
+        .rating span{
+            float: right;
+            position: relative;
+        }
+        .rating-item {
+            display: flex;
+            flex-direction: row-reverse;
+            width: 200px;
+        }
+        .rating input,.rating-item input{
+            position: absolute;
+            top:0;
+            left: 0;
+            opacity: 0;
+        }
+        .rating label,.rating-item label{
+            display: inline-block;
+        width: 20px;
+        height: 20px;
+        /*background: #fff;*/
+        margin-right: 5px;
+        /*border-radius: 50%;*/
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAoCAMAAADJ7yrpAAAAYFBMVEUAAAD92Un92Un92Un92Un92Un92Un92Un92Un92Un92Un92Un92Un92Un92Un92Un92Un92Un92Un92Un92Un92Un92Un92Un92Un92Un92Un92Un92Un92Un92Un92UmCTPEWAAAAH3RSTlMA9iwe++hAgPLJo13i3Td8JO3Sk4xtYkYUC76cVBIjGgBFCwAAAMtJREFUKM+1kUkOhCAQRUEFBHGep67737JRlEFNJ73wbyAv9WtRD/1O3z/AqrqzDqC7spEAkPECGagwlwRJE28wbpJAk5xjcIJ5rmBBwAsp9nLpsvJYkMWWxRk6QrHZSJFJesIU2UQnjCwLwSQ0kG4zQmzzdmcCuA5VocaQGNiyQX8G1qK/8q6jNH1wtCx3RxwhfnUkM3Vs6ToSdNUDK52NI6JL+4R1JD/HYaXriOsP9xxN+p08R0JV1ZlnzxELRBSJIPccSe1IvufoCxGAFoLwSVOBAAAAAElFTkSuQmCC') center bottom no-repeat;
+        }
+        .rating-item button{
+            width:60px;
+        }
+        .rating span:hover ~ span label,
+        .rating span:hover label,
+        .rating span.checked label,
+        .rating span.checked ~ span label,
+        .rating-item span.checked label,
+        .rating-item span.checked ~span label
+        {
+            background-position: center top;
+        }
+        
+        #bg{
+            position: fixed;
+            background: rgba(0,0,0,.4);
+            left:0;
+            top:0;
+            width: 100%;
+            height: 100%;
+            z-index: 2000;
+            display: none;
+        }
+        .nav-comment{
+            
+            color:#CCC;
+            height: 400px;
+            background: transparent;
+            margin:50px 20px 50px;
+        }
+        .nav-comment p{
+            color: #CCC;
+            font-size: 20px;
+            font-weight: 600;
+            margin-left: 25px;
+        }
+        .nav-comment button{
+            border: none;
+            padding: 5px 10px;
+            margin-left: 10px;
+            margin-top: 8px;
+            width: 80px;
+            color: #000;
+            background: #CCC; 
+            font-size: 15px;
+            border-radius: 50px;
+        }
+        #bg .comment{
+            margin: 300px auto 0;
+            width: 400px;
+            height: 200px;
+            background: #ccc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #message-board li{
+            border-bottom: 1px solid #fff;
+            padding: 12px 10px 8px;
+        }
+        .message{
+            width: 250px;
+            margin-top: 10px;
+        }
+        .message textarea{
+            width: 100%;
+            height: 70px;
+            border:1px solid #aaa;
+            border-radius: 5px;
+            font-size: 16px;
+            margin: auto;
+        }
+        #messageButton{
+            margin-right: 5px;
+        }
+        .mes-btn{
+            margin-top: 10px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .mes-btn .Mbtn{    
+        font-size: 17px;
+        border-radius: 5px;
+        border: none;
+        background: #3C3C3C;
+        width: 120px;
+        padding: 15px;
+        
+        color: #fff;
+        }
+        .mes-btn .Mbtn:hover{    
+        background: #080056;
+        }
+
+        #legend{
+        position: absolute;
+        bottom: 3%;
+        right: 3%;
+        z-index: 500;
+        background: rgba(255,255,255,0.7);
+        font-size: 14px;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+        padding: 10px;
+        font-weight: bold;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+        #legend img{
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        #legend li {
+            padding: 5px;
+        }
+        .link-comment{
+            color:#0af;
+        }
+        #close-board{
+        display: none;
+    }
+    #open-board{
+        display: none;
+    }
+    
+    @media screen and (max-width:768px){
+        .slide-menu{
+            width:100%;
+            transform: translateX(0);
+        }
+        .slide-menu.hide{
+            transform: translateX(-100%);
+        }
+        .slide-menu .form{
+            margin: 5px 40px 0;
+            position: relative;
+        }
+        .form input{
+            width: 245px;
+        }
+        .label{
+            display: none;
+        }
+        .nav{
+            width: 100%;
+        }
+        .countyList option, .townList option{
+            width: 100%;
+        }
+        #close-board{
+            display: block;
+            font-size: 23px;
+            color:#fff;
+            position: absolute;
+            right: -24px;
+            top:0;
+            animation: shake .4s infinite alternate;
+        }
+        #open-board{
+            display: block;
+            width: 40px;
+            height: 40px;
+            background: #000;
+            position: absolute;
+            top:90px;
+            left:10px;
+            z-index: 1000;
+            
+        }
+        #open-board:before{
+            content: '';
+            height: 4px;
+            width: 24px;
+            display: block;
+            background: #fff;
+            position: absolute;
+            top:0;
+            bottom: 0;
+            left:8px;
+            margin: auto;
+            box-shadow: 0 9px 0 #fff,0 -9px 0 #fff;
+        }
+        @keyframes shake{
+            0%{
+                transform: translateX(0);
+            }
+            100%{
+                transform: translateX(-3px);
+            }
+        }
+
+    }
+</style>
+</head>
+<body>
+  
+
+    <ul id="legend">
+      <li>
+          <img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png"> 評分 < 3
+      </li>
+      <li>
+          <img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-gold.png"> 評分 = 3
+      </li>
+      <li>
+          <img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png"> 評分 > 3
+      </li>
+    </ul>
+    <div id="open-board"></div>
+    
+    <nav class="navbar navbar-expand-md navbar-dark bg-secondary fixed-top">
+        <a class="navbar-brand" href="index.html"><img src="img/title.png" width=100px height=50px alt=""></a>
+        <!-- 行動裝置的選單按鈕 -->
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+            aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- 其他的元素 -->
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link ">首頁</a>
+                </li>
+                <li class="nav-item">
+                    <a href="aaa%20-%20%E8%A4%87%E8%A3%BD.html" class="nav-link">景點總覽</a>
+                </li>
+                <li class="nav-item">
+                    <a href="drag.html" class="nav-link">安排行程</a>
+                </li>
+               
+                
+                <li class='nav-item'>
+               <a href='login.html' class='nav-link'>帳號</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#gallerySection" class="nav-link">設定</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    
+    
+    
+    
+    <input type="checkbox" name="" id="side-menu-switch">
+<div class="slide-menu">
+   
+     <div class="form">
+    <input type="search" id="search" autocomplete="off" placeholder="點擊即可跳出篩選器">
+    <button id="btn">搜尋</button>
+    <div id="close-board">
+           <i class="fa fa-angle-right"></i>
+       </div>
+
+  </div>
+    <label for="side-menu-switch" class="label">
+     <i class="fa fa-angle-right"></i>
+    </label>
+    
+    <!-- ...我的收藏...
+    <div class="my-love">
+    <button class="love-btn">我的收藏</button>
+    </div> -->
+    
+    <!-- ...篩選條件... -->
+    <div class="condition">
+        <p>篩選條件</p>
+        <div class="con-list">
+         <a data-role="03" onclick="findList(event)"><i class="fa fa-university fa-fw" aria-hidden="true"></i>古蹟</a>
+         <a data-role="06" onclick="findList(event)"><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i>小吃/特產</a>
+         <a data-role="11" onclick="findList(event)"><i class="fa fa-sun-o fa-fw" aria-hidden="true"></i>自然風景</a>
+         <a data-role="05" onclick="findList(event)"><i class="fa fa-area-chart fa-fw" aria-hidden="true"></i>藝術</a>
+         <a data-role="ig" onclick="findList(event)"><i class="fa fa-instagram fa-fw" aria-hidden="true"></i>網紅最愛打卡景點</a>
+        </div>
+    </div>
+    
+    
+    <!-- ...縣市選單... -->
+    <div class="areaList">
+    <select name="" class="countyList" id="city"></select>
+    <select name="" class="townList"  id="town"></select>
+    </div>
+    
+    <!-- ...景點選單... -->
+    <div id="list" class="list">
+    </div>
+    
+    <!-- ...資訊欄... -->
+    <input type="checkbox" name="" id="menu-control">
+    <div class="nav">
+             <div class="pic">
+                 <label for="menu-control" class="close"><span>x</span></label>
+                  <img id="img">
+            </div>
+             <h1 id="name"></h1>
+        <div class="scroll">
+          <div id="item-content">
+          </div>
+        </div>
+    
+       <div class='nav-comment'>
+       <p>評論</p>
+        <button onclick='comment()'>新增評論</button>
+        <ul id='message-board'>
+       </ul>
+        </div>
+        
+    </div>
+</div> 
+    
+    
+<!-- ...評論... -->
+<div id="bg">
+    <div class="comment">
+            
+   <div class="rating">
+   <span><input type="radio" id="str5" value="5"><label for="str5"></label></span>
+   <span><input type="radio" id="str4" value="4"><label for="str4"></label></span>
+   <span><input type="radio" id="str3" value="3"><label for="str3"></label></span>
+   <span><input type="radio" id="str2" value="2"><label for="str2"></label></span>
+   <span><input type="radio" id="str1" value="1"><label for="str1"></label></span>
+  </div>
+                <div class="message">
+                  <textarea placeholder="請輸入評論"></textarea>
+                <div class="mes-btn">
+                  <button id="messageButton" class="Mbtn">新增留言</button>
+                  <button id="messageCancel" class="Mbtn">取消</button>
+                </div>
+                </div>
+    </div>  
+</div>    
+
+    
+    
+<div id="map">
+</div>   
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js"></script>
+<script>
+var map=L.map('map',{center:[23.973875, 120.982024],zoom:7});
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> |資料來源:<a href="https://data.gov.tw/dataset/7777" target="_blank">政府資料開放平台-觀光資訊資料庫</a>'
+}).addTo(map);
+
+var markers=new L.MarkerClusterGroup().addTo(map);
+const loveStore=JSON.parse(localStorage.getItem('loveStores'))||[];
+
+    
+
+var xhr = new XMLHttpRequest();
+var mapData;
+xhr.open("get","./town.json?v=<?=time()?>");
+xhr.send();   
+xhr.onload = function(){
+mapData= JSON.parse(xhr.responseText).XML_Head.Infos.Info;
+ /*for(let i =0;mapData.length>i;i++){
+   markers.addLayer(L.marker([mapData[i].Py,mapData[i].Px]).bindPopup(`<h2>${mapData[i].Name}</h2>
+   <p><i class="fa fa-phone" aria-hidden="true"></i> 電話:${mapData[i].Tel}</p>
+   <p><i class="fa fa-home" aria-hidden="true"></i>  地址:${mapData[i].Add}</p>
+   `));
+     if(mapData[i].Class2=='ig')
+         console.log(mapData[i].Name);
+ }
+        map.addLayer(markers);
+        document.querySelector('.love-btn').addEventListener('click',function(){
+           getLove(loveStore,mapData); 
+        });*/
+        
+    for(let i=0;mapData.length>i;i++){
+        mapData[i].Map=[];
+        mapData[i].Zone=[];
+    }
+       dragIcon();
+};
+const blueIcon = new L.Icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+const redIcon = new L.Icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});  
+const yellowIcon=new L.Icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-gold.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});  
+document.getElementById("close-board").addEventListener("click",function(){
+    document.querySelector(".slide-menu").classList.add("hide");
+});
+document.getElementById("open-board").addEventListener("click",function(){
+    document.querySelector(".slide-menu").classList.remove("hide");
+});
+
+function dragIcon(val,name){
+ markers.clearLayers();
+    for(let i =0;mapData.length>i;i++){
+        console.log(mapData[i].Name);
+        if(mapData[i].Name==name)
+            {
+             val= parseInt(val);
+             mapData[i].Zone.push(val);
+            }
+       let flagIcon=blueIcon;
+       let sum=0;
+        mapData[i].Zone.forEach(e=>{
+            sum+=e;
+        })
+       if((sum/mapData[i].Zone.length)>3)flagIcon=redIcon;  //星星總和
+       else if((sum/mapData[i].Zone.length)==3)flagIcon=yellowIcon;
+
+   markers.addLayer(L.marker([mapData[i].Py,mapData[i].Px],{icon:flagIcon}).bindPopup(`<h2>${mapData[i].Name}</h2>
+   <p><i class="fa fa-phone" aria-hidden="true"></i> 電話:${mapData[i].Tel}</p>
+   <p><i class="fa fa-home" aria-hidden="true"></i>  地址:${mapData[i].Add}</p>
+   `));
+        map.addLayer(markers);
+        /*document.querySelector('.love-btn').addEventListener('click',function(){
+           getLove(loveStore,mapData); 
+        });*/
+    }
+}
+
+    
+
+$(document).ready(function(){ 
+  $(".rating input:radio").attr("checked",false); 
+  $(".rating input:radio").click(function(e){
+      /*console.log($(".nav h1").html());*/
+      $(".rating span").removeClass("checked");
+      $(this).parent().addClass("checked");
+  });
+    
+  $("#messageButton").click(function(event){
+      let name=document.getElementById("name").innerText;
+      let target;
+      var message=$(".message textarea").val();
+      $(".message textarea").val("");
+      mapData.forEach(item=>{
+          if(item.Name==name)
+              {
+                  item.Map.push(message);
+                  target=item;
+              }
+      });
+    dragIcon($(".rating span.checked input").val(),$(".nav h1").html());
+    getmessage(target);
+    document.getElementById('bg').style.display='none';
+  });
+    
+});
+    $("#messageCancel").click(function(){
+        document.getElementById('bg').style.display='none';
+    })
+
+let getmessage=function(t){
+    document.querySelector("#message-board").innerHTML = "";
+    t.Map.forEach((item,index)=>{
+        let mes=document.createElement('li');
+        let button=document.createElement("button");
+        let text=document.createElement('p');
+        let star=document.createElement('div');
+        button.innerHTML="delete";
+        text.innerHTML=item;
+        star.innerHTML=`
+   <span><input type="radio"  value="5"><label for="str5"></label></span>
+   <span><input type="radio"  value="4"><label for="str4"></label></span>
+   <span><input type="radio"  value="3"><label for="str3"></label></span>
+   <span><input type="radio"  value="2"><label for="str2"></label></span>
+   <span><input type="radio"  value="1"><label for="str1"></label></span>`;
+        //star.innerHTML=t.Zone[index];
+        document.querySelector("#message-board").appendChild(mes);
+        mes.appendChild(star);
+        mes.appendChild(text);
+        mes.appendChild(button);
+        mes.className=`comment-item${index}`;
+        star.className="rating-item";
+        console.log($(`.comment-item${index} div span input[value=${t.Zone[index]}]`));
+        $(`.comment-item${index} div span input[value=${t.Zone[index]}]`).parent().addClass('checked');
+        button.onclick=deleteMes;
+    });
+}
+
+let deleteMes=function(event){
+    let name=document.getElementById("name").innerText;
+    $(event.target.parentNode).remove();
+    mapData.forEach((item)=>{
+        if(item.Name==name){
+            item.Map.forEach((i,index)=>{
+            if(i==event.target.parentNode.children[1].innerText)
+                {
+                 item.Map.splice(index,1);
+                 item.Zone.splice(index,1);
+                }
+              })
+            console.log(item);
+        }
+    });
+}
+
+
+ 
+    
+ document.getElementById('search').addEventListener('focus',function(){
+     document.querySelector('.condition').style.display="block";
+     document.addEventListener('click',function(e){
+        if(e.target!=document.getElementById('search'))
+             document.querySelector('.condition').style.display="none";
+     });
+ });
+    
+
+ function findList(e){
+     let str='';
+     mapData.forEach(item=>{
+         if(item.Class1==e.target.dataset.role)
+             {
+                 str=createHtml(item,str);
+             }
+     });
+     document.getElementById("list").innerHTML=str;
+     const sightContent=document.querySelectorAll(".menu-btn");
+sightContent.forEach((item)=>{
+    item.addEventListener('click',function(){
+        document.getElementById("name").textContent=item.dataset.show;
+        document.getElementById('img').src=item.dataset.image;
+        document.getElementById('item-content').textContent=item.dataset.content;
+        mapData.forEach(i=>{
+          if(i.Name==item.dataset.show)
+              {
+                  getmessage(i);
+              }
+         });
+    });
+});
+    loveBtn();
+    const sightNum=document.querySelectorAll(".content");
+        sightNum.forEach((item)=>{
+           item.addEventListener('click',function(){
+               map.setView([item.dataset.lat,item.dataset.lng],18);
+           }) 
+        });
+ }   
+    
+/*縣市選單*/
+const countySelector=document.querySelector(".countyList");
+var cityData = new XMLHttpRequest();
+cityData.open("get","./cityName.json");
+cityData.send();   
+    cityData.onload = function(){
+    var city=JSON.parse(cityData.responseText);
+        addCounty(city);
+        countySelector.addEventListener('change',function(){
+           const citySelected = document.getElementById('city').value;
+            addTown(citySelected,city);
+        });
+ }
+    
+
+    
+document.getElementById('btn').addEventListener('click',function(){
+    var searchValue=document.getElementById('search').value;
+    
+    let str='';
+    mapData.filter(store=>{
+        if(store.Name.includes(searchValue)){
+           str=createHtml(store,str);
+           }
+    });
+    document.getElementById("list").innerHTML=str;
+    const sightContent=document.querySelectorAll(".menu-btn");
+sightContent.forEach((item)=>{
+    item.addEventListener('click',function(){
+               document.getElementById("name").textContent=item.dataset.show;
+        document.getElementById('img').src=item.dataset.image;
+        document.getElementById('item-content').textContent=item.dataset.content;
+        mapData.forEach(i=>{
+          if(i.Name==item.dataset.show)
+              {
+                  getmessage(i);
+              }
+         });
+           });
+});
+    loveBtn();
+    const sightNum=document.querySelectorAll(".content");
+        sightNum.forEach((item)=>{
+           item.addEventListener('click',function(){
+               map.setView([item.dataset.lat,item.dataset.lng],18);
+           }) 
+        });
+});
+    
+function addCounty(data){
+     let countyStr="";
+    countyStr +='<option>請選擇縣市</option>';
+    for(let i=0;i<data.length;i++){
+       const cityName=data[i].CityName;
+        
+        countyStr+=`<option value="${cityName}">${cityName}</option>`;
+    }
+    countySelector.innerHTML=countyStr;
+ };
+ 
+    
+const townSelector = document.querySelector('.townList');
+townSelector.innerHTML='<option>請選擇鄉鎮區</option>';
+function addTown(citySelected,data){
+    let townStr = `<option value="">請選擇鄉鎮區</option>`;
+    for(let i=0;i<data.length;i++){
+       let cityMatch=data[i].CityName;
+        if(cityMatch==citySelected){
+            for(let t=0;t<data[i].AreaList.length;t++)
+                {
+                    townStr += `<option value="${data[i].AreaList[t].AreaName}">${data[i].AreaList[t].AreaName}</option>`
+                }
+        }
+    }
+    townSelector.innerHTML = townStr;
+    townSelector.addEventListener('change', function(){
+        var city=document.getElementById('city').value;
+        var town =document.getElementById('town').value;
+        geoTownView(city,town);});
+}
+    
+function geoTownView(city,town){
+    let str='';
+    let t=[];
+ for(let i =0;mapData.length>i;i++){
+     let cityTar=mapData[i].Region;
+     let townTar=mapData[i].Town;
+    
+     if(cityTar==city&&townTar==town)
+         {
+            map.setView([mapData[i].Py,mapData[i].Px], 17);
+             str=createHtml(mapData[i],str);
+         }
+ }
+    if(str==''){
+        str=`<p style="color:#ccc">目前沒有找到符合的資料</p>`
+    }
+        document.getElementById("list").innerHTML=str;
+        const sightNum=document.querySelectorAll(".content");
+        sightNum.forEach((item)=>{
+           item.addEventListener('click',function(){
+               map.setView([item.dataset.lat,item.dataset.lng],18);
+           }) 
+        });
+    const sightContent=document.querySelectorAll(".menu-btn");
+sightContent.forEach((item)=>{
+    item.addEventListener('click',function(){
+               document.getElementById("name").textContent=item.dataset.show;
+        document.getElementById('img').src=item.dataset.image;
+        document.getElementById('item-content').textContent=item.dataset.content;
+        mapData.forEach(i=>{
+          if(i.Name==item.dataset.show)
+              {
+                  getmessage(i);
+              }
+         });
+           });
+});
+    
+       loveBtn();
+    }  
+
+function createHtml(data,str,loved=false){
+    loveStore.forEach(s=>{
+                if(s==data.Name)
+                    loved=true;
+            })
+      
+    str+= `<div class="content" data-lat=${data.Py} data-lng=${data.Px}>
+
+         <label for="menu-control" class="menu-btn" data-show=${data.Name} data-content=${data.Toldescribe} data-image=${data.Picture1}>
+               <i class="fa fa-info-circle fa-2x " aria-hidden="true"></i>
+         </label>
+     <div class="fav">
+        <div class="love  ${loved?"hide":''}"><i class="fa fa-heart-o" aria-hidden="true"></i></div>
+        <div class="loved ${loved?"show":''}"><i class="fa fa-heart" aria-hidden="true"></i></div>
+     </div>
+    <h5>${data.Name}</h5>
+    <p><i class="fa fa-home" aria-hidden="true"></i> ${data.Add}</p>
+    <p><i class="fa fa-phone" aria-hidden="true"></i> ${data.Tel}</p>
+    </div>`;
+    return str;
+}
+
+//收藏 
+function loveBtn(){
+    
+    const love=document.querySelectorAll('.love');
+    const loved=document.querySelectorAll('.loved');
+    love.forEach(el=>{
+        let name=el.parentNode.parentNode.children[2].textContent;
+        el.addEventListener('click',function(){
+         loveStore.push(name);
+            el.classList.toggle('hide');
+            el.parentNode.children[1].classList.toggle('show');
+            localStorage.setItem('loveStores',JSON.stringify(loveStore));
+        });
+    });
+    
+    loved.forEach(el=>{
+         let name=el.parentNode.parentNode.children[2].textContent;
+        el.addEventListener('click',function(){
+             removeByValue(loveStore,name);
+            el.classList.toggle('show');
+            el.parentNode.children[0].classList.toggle('hide');
+            localStorage.setItem('loveStores',JSON.stringify(loveStore));
+        });
+    });
+}
+function removeByValue(array, value) {
+  return array.forEach((item, index) => {
+    if(item === value) {
+      array.splice(index, 1);
+    }
+  })
+}
+function getLove(list,storeData){
+     let str=``;
+    let store=[];
+     list.forEach(item=>{
+         const match=storeData.find(e=>e.Name.includes(item));
+         store.push(match);
+     });
+    store.forEach(item=>{
+        str=createHtml(item,str,true);
+    });
+    document.getElementById("list").innerHTML=str;
+    loveBtn();
+        const sightContent=document.querySelectorAll(".menu-btn");
+sightContent.forEach((item)=>{
+    item.addEventListener('click',function(){
+               document.getElementById("name").textContent=item.dataset.show;
+        document.getElementById('img').src=item.dataset.image;
+        document.getElementById('item-content').textContent=item.dataset.content;
+           });
+});
+}
+
+    
+const scroll=document.querySelector('.scroll');
+var scrollTop;//知道目前卷軸位置
+var scrollY;
+var isDown=false;
+    
+scroll.addEventListener('mouseup',()=>{
+    isDown=false;
+    scroll.classList.remove('active');
+});
+scroll.addEventListener('mouseleave',()=>{
+    isDown=false;
+    scroll.classList.remove('active');
+});
+scroll.addEventListener('mousedown',(e)=>{
+    e.preventDefault();
+   isDown = true;
+     scroll.classList.add('active');
+    scrollY=e.pageY-scroll.offsetTop;
+    scrollTop=scroll.scrollTop; 
+});
+scroll.addEventListener('mousemove',(e)=>{
+    if(!isDown)return;
+    e.preventDefault();
+    
+    var element=e.pageY-scroll.offsetTop;
+    var scrolling = (element - scrollY) * 2;
+    scroll.scrollTop= scrollTop-scrolling;
+});
+    
+    
+function comment(){
+    document.getElementById('bg').style.display='block';
+}
+
+</script>
+</body>
+</html>

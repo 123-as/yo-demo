@@ -1,0 +1,158 @@
+body{
+    background-image: url('../img/69_header.png');
+    
+}
+.row1{
+    opacity: 100%;
+    
+}
+.divotherinfo{
+    background-color: #DDDD;
+    border-radius: 5%;
+    padding: 5%;
+    opacity: 100%;
+    border: 5px;
+    border-color: black;
+}
+.loginblock{
+    /* width: 600px;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -150px 0 0 -300px; */
+    margin:0 auto;
+    width: 600px;
+}
+.login{
+    
+    font-family: "serif";
+    display:inline-block;
+    text-align: center;
+    
+}
+.login1{
+    color: #080056;
+    font-family: serif;
+    margin-left: 5px;
+    margin-right: 20px;
+    
+}
+#reviewsSection{
+    display: flex;
+    flex-wrap: wrap;
+    position: relative; 
+    padding: 50px;
+    /* animation 參數設定*/
+    margin-top: 15vh;
+    margin-bottom: 15vh;
+    animation-name: MoveToRight;   /* 動畫名稱，需與 keyframe 名稱對應*/
+    animation-duration: 4s;   /*動畫持續時間，單位為秒*/
+    animation-delay: 2s;   /* 動畫延遲開始時間*/
+    animation-iteration-count: 1;    /*動畫次數，infinite 為無限次*/    
+}
+.btn2{
+    font-size: 20px;
+    text-align: center;
+    margin-left: 2vw;
+    color: #CCCCCC;
+    background-color: #3C3C3C;
+    border-radius: 10%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.btn2:hover{
+    background-color: #080056;
+}
+.input{
+    /* height: 100%; */
+    border-radius: 10px;
+    
+    /* margin-left: 10px;
+    margin-right: 10px; */
+    /* box-sizing: border-box; */
+}
+
+.questionreport{
+    padding-left: 50px;
+}
+.icon{
+    padding-top: 0px;
+    
+}
+
+@media (max-width: 768px){
+    .logintitle{
+        font-size: 40px;
+    }
+    #reviewsSection{
+        display: flex;
+        flex-wrap: wrap;
+        position: relative; 
+        /* animation 參數設定*/
+        padding: 0;
+        animation-name: MoveToRight;   /* 動畫名稱，需與 keyframe 名稱對應*/
+        animation-duration: 4s;   /*動畫持續時間，單位為秒*/
+        animation-delay: 2s;   /* 動畫延遲開始時間*/
+        animation-iteration-count: 1;    /*動畫次數，infinite 為無限次*/  
+        
+    }
+    .input{
+        padding-left: 0;
+        padding-top: 0;
+        margin-right: 0;
+        margin-left: 3.5vw;
+    }
+    .questionreport{
+        padding-top: 0;
+        padding-left: 2vw;
+        
+    }
+    .login1{
+        margin: 0;
+        margin-right: 1px;
+        font-size: 5px;
+    
+    }
+    .btn2{
+        font-size: 15px;
+        margin-left: 10px;
+    }
+}
+
+@media (max-width: 320px){
+    .logintitle{
+        font-size: 40px;
+    }
+
+    #reviewsSection{
+        display: flex;
+        flex-wrap: wrap;
+        position: relative; 
+        /* animation 參數設定*/
+        padding: 0;
+        animation-name: MoveToRight;   /* 動畫名稱，需與 keyframe 名稱對應*/
+        animation-duration: 4s;   /*動畫持續時間，單位為秒*/
+        animation-delay: 2s;   /* 動畫延遲開始時間*/
+        animation-iteration-count: 1;    /*動畫次數，infinite 為無限次*/  
+        
+    }
+    .input{
+        padding-left: 0;
+    }
+    .questionreport{
+        padding-top: 0;
+        padding-left: 0;
+        
+    }
+    .login1{
+        margin: 0;
+        margin-right: 1px;
+        font-size: 5px;
+    
+    }
+    .btn2{
+        font-size: 15px;
+        margin-left: 45px;
+    }
+}

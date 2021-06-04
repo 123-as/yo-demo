@@ -1,0 +1,47 @@
+map.push(L.map('map'+i).setView([22.604799+i, 120.2976256+i], 13));
+                  
+L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map[i]);
+
+
+
+
+     for(let i=0;i<q;i++){
+             if(document.getElementById('map'+i).textContent==''){
+                 console.log(2);
+      map.push(L.map('map'+i).setView([22.604799, 120.2976256], 13));
+           L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map[i]);
+                 }
+        }
+
+
+
+
+
+   for(let i=0;i<q;i++){
+            if(document.getElementById('map'+i).textContent=='')
+                {  
+              switch(i){
+                  case 0:
+                      console.log(1);
+                     map1=L.map('map'+i).setView([22.604799, 120.2976256], 13);
+                      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map1);
+                      L.marker([22.6066728,120.3015429]).addTo(map1)
+    .bindPopup('<h1>IKEA</h1><p>成人口罩：50<br>兒童口罩:50</p>');
+                      break;
+                  case 1:
+                      console.log(8);
+                      map2=L.map('map'+i).setView([22.604799, 120.2976256], 13);
+                      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreet</a> contributors'
+}).addTo(map2);
+                      break;
+              }
+                }
+           
+        }
